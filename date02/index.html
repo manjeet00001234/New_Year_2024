@@ -97,8 +97,26 @@
       }
 
 
-
-
+.cycal{
+  /* width: 300px; */
+  /* height: 600px; */
+  font-size: 200px;
+  /* background-image: url("/road_img.png"); */
+  /* background-attachment: fixed; */
+  animation: run 10s linear 0s infinite;
+}
+@keyframes run{
+  to {
+    
+    /* transform: translateX(100%); */
+    margin-right: 0px;
+  }
+ from {
+   
+    /* transform: translateX(0%); */
+    margin-left: 70%;
+  }
+}
     </style>
 
 <section id="page">
@@ -142,6 +160,6 @@
   <input id="dense" type="checkbox" />
   <label for="dense">dense</label>
   
-
+<p class="cycal">🚴‍♀️</p><hr>
 
 </html>

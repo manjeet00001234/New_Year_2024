@@ -9,12 +9,6 @@ else if(a<45){
     console.log("you are therd division");
 }
 
-
-
-
-
-
-
 var row = 5;
 var col =5;
 console.log('<table>')
@@ -26,3 +20,6 @@ console.log('<table>')
             console.log('</tr>')
     }
     console.log('</table>')
+
+
+    
