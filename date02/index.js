@@ -20,6 +20,3 @@ console.log('<table>')
             console.log('</tr>')
     }
     console.log('</table>')
-
-
-    
