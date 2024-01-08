@@ -96,5 +96,8 @@
 
 
 
-let city = "jaipur";
-city === "jaipur"?console.log("city is jaipur"):console.log("city in not");
+// let city = "jaipur";
+// city === "jaipur"?console.log("city is jaipur"):console.log("city in not");
+
+
+
