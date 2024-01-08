@@ -43,23 +43,23 @@
 // console.log(und);
 
 
-function manjeet(){
-  let age=30;
-  if(age>40){
-    console.log("you a{re promoted")
-  if(age==30){
-    console.log("hello")
-  }else{
-    console.log("not hello")
-  }
+// function manjeet(){
+//   let age=30;
+//   if(age>40){
+//     console.log("you a{re promoted")
+//   if(age==30){
+//     console.log("hello")
+//   }else{
+//     console.log("not hello")
+//   }
 
-  }else  {
-    console.log("you are not eligible")
-  }
- 
+//   }else  {
+//     console.log("you are not eligible")
+//   }
 
-}
-manjeet()
+
+// }
+// manjeet()
 
 
 
