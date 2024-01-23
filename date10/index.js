@@ -79,7 +79,7 @@
 
 
 
-// let num = 5;
+// let num = 15;
 // for (i = 1; i <= num; i++){
 //     let bag = "";
 //     for (j = 1; j <= num; j++){
@@ -87,7 +87,7 @@
 //             bag = bag + "*";
 //         } else if (i==2 && j==1) {
 //             bag=bag+"*"
-//         } else if (i==4 && j==5) {
+//         } else if (i==4 && j==num) {
 //             bag=bag+"*"
 //         }
 //         else {
@@ -96,3 +96,33 @@
 //     }
 //     console.log(bag);
 // }
+
+
+// let num = 5;
+// for (i = 1; i < num-1; i++){
+//     let bag = "";
+//     for (j = 1; j <= num; j++){
+//         if (i == 1 && j == Math.ceil(num / 2)) {
+//             bag = bag + "*";
+//         } else if (i == 2 && (j > 1 && j < num)){
+//             bag = bag + "*";
+//         } else if (i == 3) {
+//             bag = bag + "*";
+//         }
+//         else {
+//             bag=bag+" "
+//         }
+//     }
+//     console.log(bag);
+// }
+
+
+let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let val = 2; 
+for (i = 0; i <= a.length - 1; i++){
+    if (i == val) {
+        break;
+    }
+    console.log(a[i]);
+}
+
