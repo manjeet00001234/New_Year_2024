@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 60%;
+            margin: auto;
+        }
+        th,td{
+            text-align: center;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body >
+<table  id="bdy" border="1">
+    <caption><h1>DATE  TABLE</h1></caption>
+
+</table>
+</body>
+<script>
+let tbl=document.getElementById("bdy");
+let thed=document.createElement("thead");
+let tr=document.createElement("tr");
+let th1=document.createElement("th");
+th1.innerText="S.NO";
+let th2=document.createElement("th");
+th2.innerText="NAME";
+let th3=document.createElement("th");
+th3.innerText="CONTACT";
+let th4=document.createElement("th");
+th4.innerText="CITY";
+tr.append(th1,th2,th3,th4);
+thed.append(tr);
+
+let tbdy=document.createElement("tbody");
+let tr1=document.createElement("tr");
+let td11=document.createElement("td");
+td11.innerText="1";
+let td12=document.createElement("td");
+td12.innerText="SUNIL KUMAR";
+let td13=document.createElement("td");
+td13.innerText="9929456879";
+let td14=document.createElement("td");
+td14.innerText="JAIPUR";
+td14.style.background="red"
+tr1.append(td11,td12,td13,td14);
+
+
+let tr2=document.createElement("tr");
+let td21=document.createElement("td");
+td21.innerText="2";
+let td22=document.createElement("td");
+td22.innerText="RAMU SINGH";
+let td23=document.createElement("td");
+td23.innerText="9955800000";
+let td24=document.createElement("td");
+td24.innerText="KAROLI";
+td24.style.background="yellow"
+tr2.append(td21,td22,td23,td24);
+
+
+let tr3=document.createElement("tr");
+let td31=document.createElement("td");
+td31.innerText="3";
+let td32=document.createElement("td");
+td32.innerText="MANJEET SINGH";
+let td33=document.createElement("td");
+td33.innerText="5580450250";
+let td34=document.createElement("td");
+td34.innerText="KAROLI";
+td34.style.background="green"
+tr3.append(td31,td32,td33,td34);
+
+
+let tr4=document.createElement("tr");
+let td41=document.createElement("td");
+td41.innerText="4";
+let td42=document.createElement("td");
+td42.innerText="ASHOK KUMAR";
+let td43=document.createElement("td");
+td43.innerText="8855800022";
+let td44=document.createElement("td");
+td44.innerText="KAROLI";
+td44.style.background="blue"
+tr4.append(td41,td42,td43,td44);
+
+
+let tr5=document.createElement("tr");
+let td51=document.createElement("td");
+td51.innerText="5";
+let td52=document.createElement("td");
+td52.innerText="RAJESH SINGH";
+let td53=document.createElement("td");
+td53.innerText="9955855468";
+let td54=document.createElement("td");
+td54.innerText="KAROLI";
+td54.style.background="gray"
+tr5.append(td51,td52,td53,td54);
+
+
+
+tbdy.append(tr1,tr2,tr3,tr4,tr5);
+tbl.append(thed,tbdy);
+
+
+
+
+console.log(tbl);
+</script>
+</html>
