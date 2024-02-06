@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="'submit-to-google-sheet'">
+        <input type="email" name="email" placeholder="please enter your email id">
+        <button type="submit"> Submit</button>
+    </form>
+
+
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwkNe82LQQ8ovWXtcYVjz1H01cLLLNNVLfQX2h6o_k3OwLYYsnx9ED-hJxcnf0BXniWDA/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+</body>
+</html>

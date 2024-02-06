@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+          <style>
+               .cont {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    gap: 20px;
+               }
+               .cont div {
+                    height: 200px;
+                    width: 200px;
+                    border: 1px solid black;
+                    display: flex;
+                    justify-content: center;
+                    background-color: blueviolet;
+                    align-items: center;
+                    margin: auto;
+               }
+          </style>
+     </head>
+     <body>
+          <div class="cont" id="price">
+               <div>Price:-100</div>
+               <div>Price:-101</div>
+               <div>Price:-102</div>
+               <div>Price:-103</div>
+               <div>Price:-104</div>
+               <div>Price:-105</div>
+               <div>Price:-106</div>
+               <div>Price:-108</div>
+               <div>Price:-109</div>
+               <div>Price:-110</div>
+          </div>
+          <select id="select_value" onchange="setData()">
+               <option value="">Select</option>
+               <option value="LTH">Low to High</option>
+               <option value="HTL">High to Low</option>
+          </select>
+
+          <script>
+let main=document.getElementById("price").value
+let selectValue=document.getElementById("select_value")
+selectValue.addEventListener("onChange",setData)
+
+function setData(a,b){
+    console.log("value")
+return a.main-b.main
+
+}
+
+
+          </script>
+     </body>
+</html>
