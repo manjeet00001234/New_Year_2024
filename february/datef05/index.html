@@ -34,6 +34,21 @@
                     border-radius: 5px;
                     border: none;
                }
+
+               table{
+                    margin:100px auto;
+                    width: 40%;
+                     border-collapse: collapse;
+               }
+               thead tr th{
+                    font-size: 25px;
+                    background-color: #54ad6394;
+                    padding: 10px;
+               }
+               tbody tr td{
+                    font-size: 18px;
+                    padding: 10px;
+               }
           </style>
      </head>
      <body>
@@ -84,27 +99,49 @@
                 let tbody = document.createElement("tbody");
                let tr = document.createElement("tr");
                let th1 = document.createElement("th");
-               th1.innerText = "sr.no";
+               th1.innerText = "Name";
                let th2 = document.createElement("th");
-               th2.innerText = "Name";
+               th2.innerText = "Email";
                let th3 = document.createElement("th");
-               th3.innerText = "Email";
+               th3.innerText = "Contact";
                tr.append(th1, th2, th3);
                thead.append(tr);
 
                function displayData(data1) {
+                    tbody.innerHTML="";
                     data1.map((item, index) => {
                          index++;
 
                          let tr1 = document.createElement("tr");
                          let td1 = document.createElement("td");
                          td1.innerText = item.name;
+
                          let td2 = document.createElement("td");
                          td2.innerText = item.email;
                          let td3 = document.createElement("td");
                          td3.innerText = item.contact;
                          tr1.append(td1, td2, td3);
                          tbody.append(tr1);
+
+
+                         if(item.name=="manjeet"){
+                              td1.style.color="green";
+                              td1.style.backgroundColor="red";
+                         }else if(item.contact=="9984562540"){
+                              td3.style.color="red";
+                              td3.style.backgroundColor="yellow";
+
+                         }else if(item.contact=="9999000000"){
+                              td3.style.color="white";
+                              td3.style.backgroundColor="red";
+                         }else{
+                              td1.style.color="black";
+                              td1.style.backgroundColor="cyan";
+                              td2.style.color="black";
+                              td2.style.backgroundColor="cyan";
+                              td3.style.color="black";
+                              td3.style.backgroundColor="cyan";
+                         }
                     });
                     let emp_data = document.getElementById("emp_data");
                     emp_data.append(thead, tbody);
