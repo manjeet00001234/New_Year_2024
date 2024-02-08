@@ -29,18 +29,50 @@
             background-color: rgba(128, 128, 128, 0.536);
             font-size: 20px;
         }
+        h1 a{
+            text-decoration: none;
+            font-size: 20px;
+            color: rgb(41, 47, 204);
+        }
+        p{
+            font-size: 20px;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
 <form action="">
-    <input type="text" placeholder="Please enter your name"><br><br>
-    <input type="password" placeholder="Please enter yout password"><br><br>
+    <p>Login Form</p>
+    <input type="text" id="name" placeholder="Please enter your name"><br><br>
+    <input type="password" id="pass" placeholder="Please enter yout password"><br><br>
     <button type="submit">Login</button>
+    <h1><a href="./index.html">New Registration</a></h1>
 </form>
-
 <script>
     let arr=JSON.parse(localStorage.getItem("data")) || [];
-                  
+    let form=document.querySelector("form");
+
+    form.addEventListener("submit",(e)=>{
+        e.preventDefault();
+        let name=document.getElementById("name").value;
+        let pass=document.getElementById("pass").value;
+        getValue(name,pass);
+        form.reset();
+    });
+
+    function getValue(getname,getpass){
+        let value=arr.some((item)=>
+        item.name==getname && item.pass==getpass);
+        if(value){
+            alert("successfull");
+            setTimeout(()=>{
+                window.open("https://www.google.com/")
+            },2000);
+        }else{
+            alert("data wrong");
+        }
+    }
+
 </script>
 </body>
 </html>
