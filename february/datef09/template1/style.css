@@ -1,0 +1,195 @@
+* {
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+}
+.nav {
+     /* border: 1px solid red; */
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+          rgba(33, 33, 36, 0.25) 0px 50px 100px -20px,
+          rgba(39, 36, 36, 0.3) 0px 30px 60px -30px;
+}
+.nav img {
+     width: 200px;
+     height: 80px;
+}
+.logo {
+     /* border: 1px solid black; */
+     width: 30%;
+}
+.hem_burgar div {
+     width: 35px;
+     height: 5px;
+     background-color: black;
+     margin: 6px 0;
+     display: none;
+}
+.options {
+     /* border: 1px solid green; */
+     width: 50%;
+}
+.options ul {
+     list-style-type: none;
+     display: flex;
+     justify-content: space-around;
+}
+.options ul li a {
+     text-decoration: none;
+     font-size: 20px;
+     color: black;
+     padding: 25px 30px;
+     transition: all 0.5s ease-in-out;
+}
+.options ul li a:hover {
+     background-color: #766e6e7e;
+     border-radius: 5px;
+     transform: scale(1.1);
+}
+
+/* ================top============================= */
+.container {
+     width: 100vw;
+     /* border: 1px solid green; */
+}
+.top {
+     width: 90%;
+     /* height: 30%; */
+     /* border: 1px solid red; */
+     margin: 20px auto;
+     color: white;
+     text-align: center;
+     border-radius: 5px;
+     padding: 100px;
+     line-height: 50px;
+     background-color: #1c1e48;
+}
+.top button {
+     padding: 10px 35px;
+     font-size: 20px;
+     border-radius: 10px;
+     cursor: pointer;
+     background-color: #4663d5f2;
+     color: white;
+     transition: all 0.5s ease-in-out;
+}
+.top button:hover {
+     transform: scale(1.1);
+     background-color: #1032ae;
+}
+
+.mid {
+     width: 90%;
+     margin: 50px auto;
+     /* border: 1px solid green; */
+}
+.mid h2 {
+     margin: 20px 0;
+}
+.mid-elements {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+     gap: 25px;
+}
+.mid-elements div {
+     /* border: 1px solid yellow; */
+     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+     padding: 20px;
+     /* line-height: 50px; */
+}
+.mid-elements div img {
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     margin: 10px;
+}
+.mid-elements div h4 {
+     margin: 10px;
+}
+
+/* ==================mid section===================== */
+
+.bottom {
+     width: 90%;
+     margin: 50px auto;
+     /* border: 1px solid blue; */
+}
+
+.us_stocks {
+     padding: 20px 0;
+     font-size: 25px;
+     font-weight: bold;
+}
+.bottom_1 {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+     gap: 50px;
+}
+.bottom_1 div {
+     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+     text-align: center;
+     padding: 50px;
+}
+.bottom_1 div img {
+     width: 50px;
+     height: 50px;
+     margin: 20px;
+}
+.bottom_1 div h3 {
+     margin: 20px;
+}
+
+.mutual_fund {
+     padding: 20px 0;
+     font-size: 25px;
+     font-weight: bold;
+}
+.bottom_2 {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+     gap: 50px;
+}
+.bottom_2 div {
+     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+     text-align: center;
+     padding: 50px;
+}
+.bottom_2 div img {
+     width: 50px;
+     height: 50px;
+     margin: 20px;
+}
+
+.bottom_1 div h3 {
+     margin: 20px;
+}
+
+/* =================media query=================== */
+
+@media screen and (min-width: 220px) and (max-width: 421px) {
+     .hem_burgar div {
+          width: 35px;
+          height: 5px;
+          background-color: black;
+          margin: 6px 0;
+          display: block;
+     }
+     .options{
+          display: none;
+     }
+}
+
+@media screen and (min-width: 422px) and (max-width: 867px) {
+     .hem_burgar div {
+          width: 35px;
+          height: 5px;
+          background-color: black;
+          margin: 6px 0;
+          display: block;
+     }
+     .options{
+          display: none;
+     }
+}
