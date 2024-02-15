@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+          <style>
+               table {
+                    width: 60%;
+                    margin: auto;
+                    text-align: center;
+               }
+               thead {
+                    background-color: rgb(113, 207, 50);
+                    color: white;
+                    font-weight: 700;
+               }
+               td {
+                    padding: 5px;
+               }
+               form {
+                    width: 30%;
+                    padding: 30px;
+                    margin: auto;
+                    border-radius: 10px;
+                    background: #ddf1f3;
+                    box-shadow: 20px 20px 31px #bccdcf, -20px -20px 31px #feffff;
+               }
+               input,
+               select {
+                    height: 30px;
+                    border-radius: 5px;
+                    width: 100%;
+               }
+               input[type="submit"] {
+                    background-color: lightcoral;
+                    color: white;
+                    font-size: 15px;
+                    font-weight: bold;
+                    transition: 0.5s ease-in-out;
+               }
+
+               input[type="submit"]:hover {
+                    cursor: pointer;
+                    background-color: rgb(238, 73, 73);
+               }
+          </style>
+     </head>
+     <body>
+          <a href="./index.html">Login page</a>
+
+          <div id="conatainer">
+               <h1 style="text-align: center">Favroute Data</h1>
+
+               <hr style="margin-top: 50px" />
+               <table id="table" border="1px">
+                    <thead>
+                         <tr>
+                              <td>Sr.No</td>
+                              <td>Name</td>
+                              <td>Mobile</td>
+                              <td>City</td>
+                              <td>Course</td>
+                              <td>Action</td>
+                         </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+               </table>
+          </div>
+          <script>
+               let allFavData =
+                    JSON.parse(localStorage.getItem("favData")) || [];
+               let tbody = document.getElementById("tbody");
+               function displayData(data) {
+                    tbody.innerHTML = "";
+                    let favindex = 0;
+                    data.map((item, index) => {
+                         favindex++;
+                         let tr = document.createElement("tr");
+                         let td1 = document.createElement("td");
+                         td1.innerText = favindex;
+                         let td2 = document.createElement("td");
+                         td2.innerText = item.name;
+                         let td3 = document.createElement("td");
+                         td3.innerText = item.mobile;
+                         let td4 = document.createElement("td");
+                         td4.innerText = item.city;
+                         let td5 = document.createElement("td");
+                         td5.innerText = item.course;
+                         let td6 = document.createElement("td");
+                         let del = document.createElement("button");
+                         del.innerText = "Delete";
+                         del.addEventListener("click", () => {
+                              addData(item, "cardData");
+                              alert("save into card page");
+                              displayData(allFavData);
+                         });
+                         td6.append(del);
+                         tr.append(td1, td2, td3, td4, td5, td6);
+                         tbody.append(tr);
+                         console.log(tr);
+                    });
+               }
+
+               displayData(allFavData);
+
+               function delData(data, p) {
+                    data.splice(p, 1);
+                    localStorage.setItem("favData", JSON.stringify(data));
+               }
+
+               function addData(value, key) {
+                    let newArr = JSON.parse(localStorage.getItem(key)) || [];
+                    newArr.push(value);
+                    localStorage.setItem(key, JSON.stringify(newArr));
+               }
+          </script>
+     </body>
+</html>

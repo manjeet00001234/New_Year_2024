@@ -35,17 +35,17 @@
                     border: none;
                }
 
-               table{
-                    margin:100px auto;
+               table {
+                    margin: 100px auto;
                     width: 40%;
-                     border-collapse: collapse;
+                    border-collapse: collapse;
                }
-               thead tr th{
+               thead tr th {
                     font-size: 25px;
                     background-color: #54ad6394;
                     padding: 10px;
                }
-               tbody tr td{
+               tbody tr td {
                     font-size: 18px;
                     padding: 10px;
                }
@@ -91,12 +91,12 @@
                          "employeData",
                          JSON.stringify(allData)
                     );
-                    displayData(allData);
                     form.reset();
+                    displayData(allData);
                }
 
                let thead = document.createElement("thead");
-                let tbody = document.createElement("tbody");
+               let tbody = document.createElement("tbody");
                let tr = document.createElement("tr");
                let th1 = document.createElement("th");
                th1.innerText = "Name";
@@ -104,11 +104,14 @@
                th2.innerText = "Email";
                let th3 = document.createElement("th");
                th3.innerText = "Contact";
-               tr.append(th1, th2, th3);
+               let th4 = document.createElement("th");
+               th4.innerText = "Action";
+
+               tr.append(th1, th2, th3, th4);
                thead.append(tr);
 
                function displayData(data1) {
-                    tbody.innerHTML="";
+                    tbody.innerHTML = "";
                     data1.map((item, index) => {
                          index++;
 
@@ -120,27 +123,41 @@
                          td2.innerText = item.email;
                          let td3 = document.createElement("td");
                          td3.innerText = item.contact;
-                         tr1.append(td1, td2, td3);
+                         let action = document.createElement("td");
+                         let add = document.createElement("button");
+                         add.innerText = "Add to Fav";
+                         add.addEventListener("click", () => {
+                              addToFav(item);
+                              alert("data added");
+                         });
+                         let del = document.createElement("button");
+                         del.innerText = "Delete";
+                         del.addEventListener("click", () => {
+                              deleteData(allData, index);
+                              alert("data deleted");
+                              displayData(allData);
+                              console.log(allData)
+                         });
+                         action.append(add, del);
+                         tr1.append(td1, td2, td3, action);
                          tbody.append(tr1);
 
-
-                         if(item.name=="manjeet"){
-                              td1.style.color="green";
-                              td1.style.backgroundColor="red";
-                         }else if(item.contact=="9984562540"){
-                              td3.style.color="red";
-                              td3.style.backgroundColor="yellow";
-
-                         }else if(item.contact=="9999000000"){
-                              td3.style.color="white";
-                              td3.style.backgroundColor="red";
-                         }else{
-                              td1.style.color="black";
-                              td1.style.backgroundColor="cyan";
-                              td2.style.color="black";
-                              td2.style.backgroundColor="cyan";
-                              td3.style.color="black";
-                              td3.style.backgroundColor="cyan";
+                         if (item.name == "manjeet") {
+                              td1.style.color = "green";
+                              td1.style.backgroundColor = "red";
+                         } else if (item.contact == "9984562540") {
+                              td3.style.color = "red";
+                              td3.style.backgroundColor = "yellow";
+                         } else if (item.contact == "9999000000") {
+                              td3.style.color = "white";
+                              td3.style.backgroundColor = "red";
+                         } else {
+                              td1.style.color = "black";
+                              td1.style.backgroundColor = "cyan";
+                              td2.style.color = "black";
+                              td2.style.backgroundColor = "cyan";
+                              td3.style.color = "black";
+                              td3.style.backgroundColor = "cyan";
                          }
                     });
                     let emp_data = document.getElementById("emp_data");
@@ -148,19 +165,20 @@
                }
 
                displayData(allData);
-
+               // <----------Add to Fav function---->/
+               function addToFav(value) {
+                    let newData =
+                         JSON.parse(localStorage.getItem("FavData")) || [];
+                    newData.push(value);
+                    localStorage.setItem("FavData", JSON.stringify(newData));
+               }
+               function deleteData(data, value) {
+                    data.splice(value, 1);
+                    localStorage.setItem("employeData", JSON.stringify(data));
+               }
           </script>
      </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 <!-- <!DOCTYPE html>
 <html lang="en">

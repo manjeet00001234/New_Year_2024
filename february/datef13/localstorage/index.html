@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ragistration page</title>
+
+</head>
+<body>
+    <form>
+            <input id="name" type="text" placeholder="Please enter your name"><br><br>
+            <input id="pass" type="password" placeholder="please enter your password"><br><br>
+            <input id="email" type="email" placeholder="please enter your email"><br><br>
+            <select id="option">
+                <option value="">--select--</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="javaScript">javaScript</option>
+            </select><br><br>
+            <button type="submit">Submit</button>
+    </form>
+
+    <table border="1"></table>
+
+    <script>
+let arr=JSON.parse(localStorage.getItem("data")) || [];
+let form=document.querySelector("form");
+form.addEventListener("submit",(e)=>{
+    e.preventDefault="";
+    let data={
+        name:document.getElementById("name").value,
+        pass:document.getElementById("pass").value,
+        email:document.getElementById("email").value,
+        option:document.getElementById("option").value
+    }
+    arr.push(data);
+    localStorage.setItem("data",JSON.stringify(arr));
+    showData(data);
+    form.reset();
+})
+console.log(arr);
+let table=document.querySelector("table")
+let thead=document.createElement("thead");
+let tbody=document.createElement("tbody");
+let tr1=document.createElement("tr");
+let th1=document.createElement("th");
+th1.innerText="S NO.";
+let th2=document.createElement("th");
+th2.innerText="Name";
+let th3=document.createElement("th");
+th3.innerText="Password";
+let th4=document.createElement("th");
+th4.innerText="Email";
+let th5=document.createElement("th");
+th5.innerText="Course";
+let th6=document.createElement("th");
+th6.innerText="Action";
+tr1.append(th1,th2,th3,th4,th5,th6);
+thead.append(tr1);
+table.append(thead)
+
+function showData(getData){
+    tbody.innerHTML="";
+    let newIndex=0;
+    getData.map((item,index)=>{
+newIndex++;
+        let tr2=document.createElement("tr");
+        let td1=document.createElement("td");
+        td1.innerText=newIndex;
+        let td2=document.createElement("td");
+        td2.innerText=item.name;
+        let td3=document.createElement("td");
+        td3.innerText=item.pass;
+        let td4=document.createElement("td");
+        td4.innerText=item.email;
+        let td5=document.createElement("td");
+        td5.innerText=item.option;
+        let td6=document.createElement("td");
+        let add=document.createElement("button");
+        add.innerText="Add";
+        add.addEventListener("click",()=>{
+            addData(item);
+            showData(arr);
+            console.log(item);
+            alert("add data")
+        })
+        let delet=document.createElement("button");
+        delet.innerText="Delete";
+        delet.addEventListener("click",()=>{
+            deletData(arr,index);
+            showData(arr);
+            console.log(arr);
+            alert("data delete");
+        })
+        td6.append(add,delet);
+        tr2.append(td1,td2,td3,td4,td5,td6);
+        tbody.append(tr2);
+        table.append(tbody)
+        });
+    }
+showData(arr)
+
+
+
+// =============fav data=======================
+
+function addData(value){
+    let newArr=JSON.parse(localStorage.getItem("favData")) || [];
+    newArr.push(value);
+    localStorage.setItem("favData",JSON.stringify(newArr));
+}
+
+
+// ======================delet data=================
+
+function deletData(d,index){
+d.splice(index,1);
+localStorage.setItem("data",JSON.stringify(arr));
+}
+
+    </script>
+</body>
+</html>
