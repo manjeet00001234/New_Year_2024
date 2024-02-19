@@ -46,6 +46,16 @@
                     background-color: #fff;
                     border-radius: 5px;
                }
+                    nav img{
+                    width: 70px;
+                    height: 60px;
+                    border-radius: 50%;
+                    margin: auto;
+                    cursor: pointer;
+               }
+               nav a{
+                    margin: auto;
+               }
 
                table {
                     margin: auto;
@@ -54,7 +64,7 @@
                     width: 70%;
                }
                table tr th {
-                    padding: 20px;
+                    padding: 10px;
                     font-size: 20px;
                     background-color: #26d2234e;
                }
@@ -89,23 +99,29 @@
                     margin: 20px;
                     color: green;
                }
+               h1{
+                    text-align: center;
+                    color: red;
+                    margin-top: 100px;
+               }
           </style>
      </head>
      <body>
           <nav>
-               <img src="" alt="" />
+               <!-- <img src="" alt="" /> -->
+               <a href="index.html"><img src="ms_logo1.png" alt="" /></a>
                <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="accept.html">Accept</a></li>
                     <li><a href="hold.html">Hold</a></li>
-                    <li><a href="delet.html">Delet</a></li>
+                    <li><a href="delet.html">Delete</a></li>
                     <!-- <li><a href="">other's</a></li> -->
                </ul>
           </nav>
 
           <table border="1">
                <caption>
-                    Student Delete Data
+                    Student's Delete Data
                </caption>
           </table>
 
@@ -113,6 +129,10 @@
 
 
           <script>
+               let allDeleteData=JSON.parse(localStorage.getItem("deletData")) || [];
+               if(allDeleteData.length==0){
+                    document.write("<h1>Data Note Found.....</h1>")
+               }else{
                let table = document.querySelector("table");
                let thead = document.createElement("thead");
                let tbody = document.createElement("tbody");
@@ -139,7 +159,6 @@
                thead.append(tr1);
                table.append(thead);
 
-               let allDeleteData=JSON.parse(localStorage.getItem("showDelete")) || [];
             function rejectData(data){
                    tbody.innerHTML="";
                 let deleteIndex=0;
@@ -164,6 +183,7 @@
                 });
                };
                rejectData(allDeleteData);
+               }
           </script>
      </body>
 </html>

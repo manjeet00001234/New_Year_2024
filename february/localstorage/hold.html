@@ -46,6 +46,16 @@
                     background-color: #fff;
                     border-radius: 5px;
                }
+                    nav img{
+                    width: 70px;
+                    height: 60px;
+                    border-radius: 50%;
+                    margin: auto;
+                    cursor: pointer;
+               }
+               nav a{
+                    margin: auto;
+               }
 
                table {
                     margin: auto;
@@ -54,14 +64,11 @@
                     width: 70%;
                }
                table tr th {
-                    padding: 20px;
+                    padding: 10px;
                     font-size: 20px;
                     background-color: #26d2234e;
                }
-               /* table tr th:nth-child(7){
-                width: 30%;
-                border: 1px solid green;
-               } */
+
                table tr td {
                     padding: 5px;
                }
@@ -89,11 +96,17 @@
                     margin: 20px;
                     color: green;
                }
+               h1{
+                color: red;
+                text-align: center;
+                margin: 150px 0;
+               }
           </style>
      </head>
      <body>
           <nav>
-               <img src="" alt="" />
+               <!-- <img src="" alt="" /> -->
+               <a href="index.html"><img src="ms_logo1.png" alt="" /></a>
                <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="accept.html">Accept</a></li>
@@ -105,11 +118,18 @@
 
           <table border="1">
                <caption>
-                Student's Hold Data
+                    Student's Hold Data
                </caption>
           </table>
 
           <script>
+               let allHoldData =
+                    JSON.parse(localStorage.getItem("holldData")) || [];
+
+                    if(allHoldData.length===0){
+                        document.write("<h1>data note found........</h1>");
+                    }else{
+
                let table = document.querySelector("table");
                let thead = document.createElement("thead");
                let tbody = document.createElement("tbody");
@@ -132,8 +152,6 @@
                thead.append(tr1);
                table.append(thead);
 
-               let allHoldData =
-                    JSON.parse(localStorage.getItem("holldData")) || [];
                function showHoldData(data) {
                     tbody.innerHTML = "";
 
@@ -180,6 +198,7 @@
                     data.splice(p, 1);
                     localStorage.setItem("holldData", JSON.stringify(data));
                     showHoldData(allHoldData);
+               }
                }
           </script>
      </body>
