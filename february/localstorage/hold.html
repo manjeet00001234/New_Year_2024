@@ -105,14 +105,12 @@
      </head>
      <body>
           <nav>
-               <!-- <img src="" alt="" /> -->
                <a href="index.html"><img src="ms_logo1.png" alt="" /></a>
                <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="accept.html">Accept</a></li>
                     <li><a href="hold.html">Hold</a></li>
-                    <li><a href="delet.html">Delete</a></li>
-                    <!-- <li><a href="">other's</a></li> -->
+                    <li><a href="delet.html">Rejected</a></li>
                </ul>
           </nav>
 
@@ -176,7 +174,7 @@
                          hold.innerText = "Accept";
                          hold.addEventListener("click", () => {
                               acceptData(item, "acptData");
-                              alert("item added to hold data");
+                              alert("Student's Admition Form Accepted");
                               rejectData(allHoldData, index);
                          });
                          td7.append(hold);
@@ -201,5 +199,6 @@
                }
                }
           </script>
+
      </body>
 </html>
