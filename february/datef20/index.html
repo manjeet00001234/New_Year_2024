@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+        function myFunc(name,age,city){
+            Object1:{
+                this.Name=name,
+                this.Age=age,
+                this.City=city
+            }
+        }
+        let myFunc1=new myFunc("manjeet",20,"jaipur");
+        console.log(myFunc1);
+        document.write(myFunc1.Name," ",myFunc1.Age," ",myFunc1.City)
+
+    </script>
+</body>
+</html>

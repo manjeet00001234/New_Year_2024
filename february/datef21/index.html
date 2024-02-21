@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+     </head>
+     <body>
+          <script>
+               {
+                    function windio() {
+                         console.log("windio", this);
+                    }
+                    windio();
+               }
+
+               {
+                    function myFunt() {
+                         console.log("hello world", this);
+                    }
+
+                    let obj1 = {
+                         name: "manjeet",
+                         age: 25,
+                         city: "jhunjhunu",
+                    };
+                    myFunt.call(obj1);
+               }
+
+               {
+                    let obj2 = {
+                         name: "ramu singh",
+                         age: 20,
+                         city: "kroli",
+                    };
+                    myFunt.apply(obj2);
+               }
+
+               {
+                    let obj3 = {
+                         name: "sunil",
+                         age: 19,
+                         city: "jaipur",
+                    };
+
+                    let newmyFunt = myFunt.bind(obj3);
+                    newmyFunt();
+               }
+
+               {
+                    function sayGoodBye() {
+                         console.log("hello world", this);
+                    }
+
+                    function sayeHello() {
+                         console.log("saye hello", this);
+                         sayGoodBye();
+                    }
+                    sayeHello();
+               }
+
+               {
+                    let data = {
+                         name: "mohan",
+                         age: 25,
+                         city: "ajmer",
+                         cantent: function () {
+                              console.log(this.name, this.age, this.city);
+                         },
+                    };
+                    data.cantent();
+               }
+
+               {
+                    function data() {
+                         var obj = {
+                              name: "suresh",
+                              age: 25,
+                              city: "odisha",
+                         };
+                         function data1() {
+                              console.log(this, "94");
+                         }
+                         data1.call(obj);
+                    }
+                    data();
+               }
+
+               {
+                    function numValue(num) {
+                         return num * 2;
+                    }
+                    console.log(numValue(3), "value");
+               }
+
+               {
+                    let newArr = function newFun(val) {
+                         return val * 5;
+                    };
+                    console.log(newArr(5));
+               }
+
+               {
+                    var arrFun = (val) => {
+                         return val * 2;
+                    };
+                    console.log(arrFun(5));
+               }
+
+               {
+                    function person(name, age, city) {
+                         (this.Name = name),
+                              (this.Age = age),
+                              (this.City = city);
+                    }
+                    let newPerson = new person("Radhesyam", 55, "jaipur");
+                    console.log(newPerson);
+               }
+
+               //    -----------constructor function-----
+               {
+                    function userData(name, age) {
+                         (this.Name = name), (this.Age = age);
+                    }
+                    let newUserData = new userData("mohan", 25);
+                    console.log(newUserData);
+               }
+
+               {
+                    function createParson(name, age) {
+                         return {
+                              Name: name,
+                              Age: age,
+                         };
+                    }
+                    let newCreateParson = createParson("mohan", 22);
+                    console.log(newCreateParson);
+               }
+
+               //    ------class function---
+
+               {
+                    class user {
+                         constructor(name, age) {
+                              this.Name = name;
+                              this.Age = age;
+                         }
+                    }
+                    let newUser=new user("ramesh",22)
+                    console.log(newUser);
+               }
+          </script>
+     </body>
+</html>

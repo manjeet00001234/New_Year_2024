@@ -1,23 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-<style>
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+          <style>
+            *{
+                margin: 0%;
+                padding: 0%;
+                box-sizing: border-box;
+            }
+               .div_1 {
+                    display: flex;
+                    gap: 50px;
+                    width: 400px;
+                    justify-content: space-between;
+                    margin: auto;
 
-</style>
-</head>
-<body>
-<nav>
-    <ul>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
+               }
+               .div_1 h1{
+                padding: 20px;
+               }
+               .div_2 {
+                    display: flex;
+                    gap: 50px;
+                    width: 390px;
+                    justify-content: space-between;
+                    margin: auto;
+                    padding: 10px;
 
-    </ul>
-</nav>
-</body>
+
+               }
+               .div_2 h1 {
+                    /* border: 1px solid gray; */
+                    /* padding: 20px; */
+                    width: 70px;
+                    height: 70px;
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px;
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+               }
+          </style>
+     </head>
+     <body>
+          <div class="div_1">
+              <h1>Hr</h1>
+              <h1>Min</h1>
+               <h1>Sec</h1>
+          </div>
+
+          <div class="div_2">
+               <h1 id="hr">0</h1>
+               <h1 id="min">0</h1>
+               <h1 id="count">0</h1>
+          </div>
+
+          <script>
+               let hr1 = document.getElementById("hr");
+               let min1 = document.getElementById("min");
+               let cont1 = document.getElementById("count");
+
+               let cont = 0;
+               let min = 0;
+               let hr = 0;
+
+               setInterval(function () {
+                    cont++;
+                    cont1.innerText = cont;
+                    if (cont == 60) {
+                         // alert("hello word");
+                         cont = 0;
+                         min++;
+                         min1.innerText = min;
+                    } else if (min == 60) {
+                         min = 0;
+                         hr++;
+                         hr1.innerText = hr;
+                    }
+               }, 1000);
+          </script>
+     </body>
 </html>
