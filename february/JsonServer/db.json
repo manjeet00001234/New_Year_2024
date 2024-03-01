@@ -1,0 +1,364 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "image": "https://images.meesho.com/images/products/244873241/zymw0_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 2,
+            "image": "https://images.meesho.com/images/products/299935503/moyzk_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 3,
+            "image": "https://images.meesho.com/images/products/375088158/wrijo_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 4,
+            "image": "https://images.meesho.com/images/products/388481013/vzuji_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 5,
+            "image": "https://images.meesho.com/images/products/273514235/u1gcr_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 6,
+            "image": "https://images.meesho.com/images/products/282482944/bsbyn_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 7,
+            "image": "https://images.meesho.com/images/products/182707434/qarsr_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 8,
+            "image": "https://images.meesho.com/images/products/377068273/ensif_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 9,
+            "image": "https://images.meesho.com/images/products/376268422/70pi5_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 10,
+            "image": "https://images.meesho.com/images/products/161668061/buo1f_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 11,
+            "image": "https://images.meesho.com/images/products/392743821/9wxr3_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 12,
+            "image": "https://images.meesho.com/images/products/354346226/vkye7_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 13,
+            "image": "https://images.meesho.com/images/products/392744164/kyal2_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 14,
+            "image": "https://images.meesho.com/images/products/81894170/jh0pj_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 15,
+            "image": "https://images.meesho.com/images/products/305347202/8zjrd_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 16,
+            "image": "https://images.meesho.com/images/products/392845490/a88xr_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 17,
+            "image": "https://images.meesho.com/images/products/100479224/tnhfa_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 18,
+            "image": "https://images.meesho.com/images/products/294652764/8i2na_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 19,
+            "image": "https://images.meesho.com/images/products/82347793/mwfxn_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 20,
+            "image": "https://images.meesho.com/images/products/208849759/ifcmn_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 21,
+            "image": "https://images.meesho.com/images/products/292657943/os6hp_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 22,
+            "image": "https://images.meesho.com/images/products/173742638/g0wxx_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 23,
+            "image": "https://images.meesho.com/images/products/266643045/tvn9r_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 24,
+            "image": "https://images.meesho.com/images/products/12545577/2edce_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 25,
+            "image": "https://images.meesho.com/images/products/370089920/s9lqc_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 26,
+            "image": "https://images.meesho.com/images/products/344760584/viv1p_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 27,
+            "image": "https://images.meesho.com/images/products/296851176/54bm7_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 28,
+            "image": "https://images.meesho.com/images/products/338091330/68fhp_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 29,
+            "image": "https://images.meesho.com/images/products/305324661/tixg9_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 30,
+            "image": "https://images.meesho.com/images/products/186290043/shhmr_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 31,
+            "image": "https://images.meesho.com/images/products/81749447/clv3m_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 32,
+            "image": "https://images.meesho.com/images/products/100535063/zj8xu_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 33,
+            "image": "https://images.meesho.com/images/products/261163305/efs1y_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 34,
+            "image": "https://images.meesho.com/images/products/392569622/m8skt_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 35,
+            "image": "https://images.meesho.com/images/products/244378891/anamz_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 36,
+            "image": "https://images.meesho.com/images/products/283901233/v3nxw_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 37,
+            "image": "https://images.meesho.com/images/products/313279748/59g22_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 38,
+            "image": "https://images.meesho.com/images/products/304881526/g5uis_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 39,
+            "image": "https://images.meesho.com/images/products/331529218/nszj5_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 40,
+            "image": "https://images.meesho.com/images/products/389616397/7zkfa_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 41,
+            "image": "https://images.meesho.com/images/products/384770497/5zaby_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 42,
+            "image": "https://images.meesho.com/images/products/367884839/yspaf_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 43,
+            "image": "https://images.meesho.com/images/products/389089071/l5yhd_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 44,
+            "image": "https://images.meesho.com/images/products/288307250/mxx2g_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 45,
+            "image": "https://images.meesho.com/images/products/74779629/9hods_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 46,
+            "image": "https://images.meesho.com/images/products/133881203/lr94g_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 47,
+            "image": "https://images.meesho.com/images/products/378501214/4tnnm_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 48,
+            "image": "https://images.meesho.com/images/products/229165166/bchqs_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 49,
+            "image": "https://images.meesho.com/images/products/229543554/7kzv2_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 50,
+            "image": "https://images.meesho.com/images/products/218556376/d668w_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 51,
+            "image": "https://images.meesho.com/images/products/279623521/uq8np_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 52,
+            "image": "https://images.meesho.com/images/products/81574848/5fhww_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 53,
+            "image": "https://images.meesho.com/images/products/304739086/z2ffq_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 54,
+            "image": "https://images.meesho.com/images/products/218556372/uhwvp_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 55,
+            "image": "https://images.meesho.com/images/products/197634629/g7ac0_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 56,
+            "image": "https://images.meesho.com/images/products/343310375/wigkw_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 57,
+            "image": "https://images.meesho.com/images/products/100508706/pomgv_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 58,
+            "image": "https://images.meesho.com/images/products/318978126/fpfrq_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 59,
+            "image": "https://images.meesho.com/images/products/344760584/viv1p_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        },
+        {
+            "id": 60,
+            "image": "https://images.meesho.com/images/products/305364572/ybqrf_400.webp",
+            "name": "Men Clothing",
+            "Price": 1120
+        }
+    ]
+}

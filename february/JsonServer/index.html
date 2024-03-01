@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>LocalServer Api</title>
+          <style>
+               #mainDiv {
+                    padding: 20px;
+                    display: grid;
+                    /* grid-template-columns: repeat(5,1fr); */
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 20px;
+               }
+               #mainDiv div {
+                    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+                    text-align: center;
+                    padding: 20px;
+                    cursor: pointer;
+                    transition: all 0.5s ease-in-out;
+               }
+               #mainDiv div:hover {
+                    transform: scale(1.04);
+               }
+               #mainDiv img {
+                    width: 230px;
+                    height: 300px;
+                    border-radius: 20px;
+               }
+               h1 {
+                    text-align: center;
+                    margin: 50px 0;
+                    font-size: 60px;
+                    color: rgba(255, 255, 255, 1);
+                    text-shadow: 2px 2px 0px rgba(64, 116, 181, 1),
+                         2px -2px 0px rgba(64, 116, 181, 1),
+                         -2px 2px 0px rgba(64, 116, 181, 1),
+                         -2px -2px 0px rgba(64, 116, 181, 1),
+                         2px 0px 0px rgba(64, 116, 181, 1),
+                         0px 2px 0px rgba(64, 116, 181, 1),
+                         -2px 0px 0px rgba(64, 116, 181, 1),
+                         0px -2px 0px rgba(64, 116, 181, 1);
+               }
+               button {
+                    padding: 5px 10px;
+                    border-radius: 10px;
+                    border: none;
+                    outline: none;
+                    background-color: rgba(66, 229, 17, 0.681);
+                    color: white;
+                    font-size: 15px;
+                    font-weight: 600;
+                    cursor: pointer;
+               }
+          </style>
+     </head>
+
+     <body>
+          <h1>Local Api Data</h1>
+          <div id="mainDiv"></div>
+
+          <script>
+               let url = "http://localhost:3000/data";
+               let arr = [];
+
+               async function apiData() {
+                    try {
+                         let urlValue = await fetch(url);
+                         let fatchValue = await urlValue.json();
+                         arr = fatchValue;
+                        //  console.log(arr); 
+                         showApiData(arr);
+                    } catch (error) {
+                         console.log("error");
+                    }
+               }
+
+               apiData(arr);
+
+               function showApiData(data) {
+                    data.map((item) => {
+                         let mainDiv = document.getElementById("mainDiv");
+                         let div = document.createElement("div");
+
+                         let id = document.createElement("h2");
+                         id.innerText = "ID: " + item.id;
+                         id.style.color = "blue";
+
+                         let img = document.createElement("img");
+                         img.src = item.image;
+
+                         let name = document.createElement("h2");
+                         name.innerText = "Name: " + item.name;
+                         name.style.color = "green";
+
+                         let rate = document.createElement("h2");
+                         rate.innerText = "Price: " + item.Price;
+                         rate.style.color = "rgb(52, 235, 216)";
+
+                         let btn = document.createElement("button");
+                         btn.innerText = "Bye Now";
+
+                         div.append(id, img, name, rate, btn);
+                         mainDiv.append(div);
+                    });
+               }
+               showApiData(arr);
+          </script>
+     </body>
+</html>

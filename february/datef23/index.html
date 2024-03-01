@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Api Intigration</title>
+          <style>
+               * {
+                    padding: 0;
+                    margin: 0;
+                    box-sizing: border-box;
+               }
+               #main_contaner {
+                    padding: 20px;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 30px;
+                    cursor: pointer;
+               }
+               #main_contaner img {
+                    width: 90%;
+                    height: 200px;
+                    /* border-radius: 50%; */
+                    /* box-shadow: 0px 25px 80px rgba(190, 37, 37, 0.197); */
+               }
+               #main_contaner div {
+                    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                    padding: 10px;
+                    line-height: 40px;
+                    transition: all 0.4s ease-in-out;
+               }
+               #main_contaner div:hover {
+                    transform: scale(1.03);
+               }
+               h1 {
+                    text-align: center;
+                    margin: 50px 0;
+                    font-size: 60px;
+                    /* text-decoration: underline; */
+                    color: lightcoral;
+                    /* text-shadow: 0 5px 10px; */
+                    text-shadow: 0 1px 0px #378ab4, 1px 0 0px #5dabcd,
+                         1px 2px 1px #378ab4, 2px 1px 1px #5dabcd,
+                         2px 3px 2px #378ab4, 3px 2px 2px #5dabcd,
+                         3px 4px 2px #378ab4, 4px 3px 3px #5dabcd,
+                         4px 5px 3px #378ab4, 5px 4px 2px #5dabcd,
+                         5px 6px 2px #378ab4, 6px 5px 2px #5dabcd,
+                         6px 7px 1px #378ab4, 7px 6px 1px #5dabcd,
+                         7px 8px 0px #378ab4, 8px 7px 0px #5dabcd;
+               }
+          </style>
+     </head>
+     <body>
+          <h1>WOMEN'S MAKEUP ITEM'S</h1>
+          <div id="main_contaner"></div>
+
+          <script>
+               let url = "https://helpful-gray-rooster.cyclic.app/makeup";
+               let arr = [];
+
+               async function getData() {
+                    try {
+                         let val = await fetch(url);
+                         let newVal = await val.json();
+                         arr = newVal;
+                         showData(arr);
+                    } catch (error) {
+                         console.log("arrar");
+                    }
+               }
+               getData(arr);
+
+               let cantant = document.getElementById("main_contaner");
+               function showData(data) {
+                    data.map((item) => {
+                         let div = document.createElement("div");
+                         let id = document.createElement("h2");
+                         id.innerText = "ID : " + item.id;
+
+                         let img = document.createElement("img");
+                         img.src = item.image;
+
+                         let name = document.createElement("h3");
+                         let name_val = item.name;
+                         let name_arr = name_val.split(" ");
+                         name.innerText = `Name : ${name_arr[0]} ${name_arr[1]} ...`;
+                         name.style.color = "indigo";
+
+                         let category = document.createElement("h3");
+                         category.innerText = "Category : " + item.category;
+                         category.style.color = "gray";
+
+                         let customer_category = document.createElement("h3");
+                         customer_category.innerText =
+                              "customer_category : " + item.customer_category;
+                         let cus_value = item.customer_category;
+
+                         if (cus_value === undefined) {
+                              customer_category.innerText = `customer_category : Both`;
+                              customer_category.style.color = "green";
+                         }
+
+                         let price = document.createElement("h3");
+                         price.innerText = "Price : " + item.price;
+                         price.style.color = "blue";
+
+                         let discount = document.createElement("h3");
+                         discount.innerText = "Discount : " + item.discount;
+                         let dis = item.discount;
+                         if (dis == undefined) {
+                              discount.innerText = "No Discount";
+                         }
+
+                         discount.style.color = "red";
+
+                         let rating = document.createElement("h3");
+                         rating.innerText = "Rating : " + item.rating;
+
+                         let des = document.createElement("h3");
+                         let des_val = item.des;
+                         let des_arr = des_val.split(" ");
+                         let des_splice = des_arr.splice(2, 2);
+                         des.innerText = `Description : ${des_splice} ...`;
+
+                         div.append(
+                              id,
+                              img,
+                              name,
+                              category,
+                              customer_category,
+                              price,
+                              discount,
+                              des
+                         );
+                         cantant.append(div);
+                    });
+               }
+               showData(arr);
+          </script>
+     </body>
+</html>

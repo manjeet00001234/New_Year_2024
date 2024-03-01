@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Api Data get , post and delete</title>
+          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+          <style>
+               * {
+                    padding: 0%;
+                    margin: 0%;
+                    box-sizing: border-box;
+               }
+               .main_contaner {
+                    width: 95%;
+                    margin: auto;
+                    /* border: 1px solid red; */
+                    display: flex;
+                    justify-content: space-between;
+               }
+
+               .input_data {
+                    width: 35%;
+                    height: auto;
+                    padding: 20px;
+                    text-align: center;
+                    /* border: 1px solid black; */
+                    background-color: rgba(214, 214, 208, 0.14);
+               }
+
+               .input {
+                    border: none;
+                    outline: none;
+                    border-radius: 15px;
+                    padding: 0.5em;
+                    background-color: #ccc;
+                    transition: 300ms ease-in-out;
+                    width: 90%;
+                    height: 50px;
+                    font-size: 15px;
+               }
+
+               .input:focus {
+                    background-color: white;
+                    transform: scale(1.01);
+                    box-shadow: 13px 13px 100px #969696,
+                         -13px -13px 100px #ffffff;
+               }
+               h1 {
+                    text-align: center;
+                    margin: 20px 0;
+                    color: rgba(255, 255, 255, 1);
+                    text-shadow: 2px 2px 0px rgba(64, 116, 181, 1),
+                         2px -2px 0px rgba(64, 116, 181, 1),
+                         -2px 2px 0px rgba(64, 116, 181, 1),
+                         -2px -2px 0px rgba(64, 116, 181, 1),
+                         2px 0px 0px rgba(64, 116, 181, 1),
+                         0px 2px 0px rgba(64, 116, 181, 1),
+                         -2px 0px 0px rgba(64, 116, 181, 1),
+                         0px -2px 0px rgba(64, 116, 181, 1);
+                    font-size: 30px;
+               }
+               .sub_btn {
+                    width: 50%;
+                    padding: 10px;
+                    border-radius: 10px;
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: white;
+                    border: none;
+                    outline: none;
+                    background-color: rgba(128, 128, 128, 0.495);
+               }
+               .show_data{
+                    width: 60%;
+                    /* border: 1px solid black; */
+                    background-color: rgba(128, 128, 128, 0.089);
+                    padding: 20px;
+               }
+               table{
+                    text-align: center;
+                    /* margin:50px auto; */
+                    /* border: 1px solid green; */
+                    width: 100%;
+                     border-collapse: collapse;
+
+               }
+               table tr th{
+                    padding: 10px;
+                    font-size: 18px;
+               }
+               table tr td{
+                    padding: 5px;
+               }
+               table tr td img{
+                    /* border: 1px solid red; */
+                    width: 50px;
+                    height: 50px;
+               }
+               button{
+                    padding: 5px 10px ;
+                    color: white;
+                    background-color: rgba(128, 128, 128, 0.578);
+                    border: none;
+                    outline: none;
+               }
+               caption{
+                    font-size: 30px;
+                    margin: 40px 0 15px 0;
+               }
+
+          </style>
+     </head>
+     <body>
+          <div class="main_contaner">
+               <div class="input_data">
+                    <h1>enter your data</h1>
+                    <form>
+                         <input
+                              type="text"
+                              id="name"
+                              class="input"
+                              required
+                              placeholder="Please enter your name" /><br /><br />
+
+                         <input
+                              type="mail"
+                              id="mail"
+                              class="input"
+                              required
+                              placeholder="Please enter your email" /><br /><br />
+
+                         <input
+                              type="text"
+                              id="mob"
+                              class="input"
+                              required
+                              placeholder="Please enter your mobile number" /><br /><br />
+
+                         <input
+                              type="text"
+                              id="city"
+                              class="input"
+                              required
+                              placeholder="Please enter your city" /><br /><br />
+
+                         <input
+                              type="text"
+                              id="nation"
+                              class="input"
+                              required
+                              placeholder="Please enter your nation" /><br /><br />
+
+                         <input
+                              type="url"
+                              id="url"
+                              class="input"
+                              required
+                              placeholder="Please enter your img url" /><br /><br />
+
+                         <button type="submit" class="sub_btn">Submit</button>
+                    </form>
+               </div>
+
+               <div class="show_data">
+                    <table border="1">
+                         <caption>Shoe Your Data</caption>
+                         <thead>
+                         <tr>
+                              <th>Id</th>
+                              <th>Name</th>
+                              <th>Email</th>
+                              <th>Mobile</th>
+                              <th>City</th>
+                              <th>Nation</th>
+                              <th>Image</th>
+                              <th>Action</th>
+                         </tr>
+                         </thead>
+                         <tbody id="tbody"></tbody>
+                    </table>
+               </div>
+          </div>
+
+
+          <script>
+
+               let url="http://localhost:3000/data";
+               let arr=[];
+               let form=document.querySelector("form");
+               form.addEventListener("submit",inputData);
+
+
+               async function inputData(e){
+                    e.preventDefault();
+                    let obj={
+                         name:document.getElementById("name").value,
+                         mail:document.getElementById("mail").value,
+                         mob:document.getElementById("mob").value,
+                         city:document.getElementById("city").value,
+                         nation:document.getElementById("nation").value,
+                         img:document.getElementById("url").value
+
+                    };
+
+                    try {
+                         let responce=await axios.post(url,obj);
+
+
+                    } catch (error) {
+                         console.log(error);
+                    }
+               }
+
+
+
+
+               // ----------------------------delete data function------------------
+
+               async function deleteData(id){
+                    try {
+                         let deletData=await axios.delete(`http://localhost:3000/data/${id}`);
+                    } catch (error) {
+                         console.log(error);
+                    }
+               }
+
+
+
+
+
+
+               // -------------------show data----------------
+
+
+               async function dataShow(){
+                    try {
+                         let apiUrl = await fetch(url);
+                         let jsonUrl = await apiUrl.json();
+                         arr = jsonUrl;
+                         showData(arr);
+
+                    } catch (error) {
+                         console.log(error);
+                    }
+               }
+               dataShow()
+               let tbody=document.getElementById("tbody")
+               function showData(data){
+                    data.map((item)=>{
+                         let tr1=document.createElement("tr");
+                         let td1=document.createElement("td");
+                         td1.innerText=item.id;
+
+                         let td2=document.createElement("td");
+                         td2.innerText=item.name;
+
+                         let td3=document.createElement("td");
+                         td3.innerText=item.mail;
+
+                         let td4=document.createElement("td");
+                         td4.innerText=item.mob;
+
+                         let td5=document.createElement("td");
+                         td5.innerText=item.city;
+
+                         let td6=document.createElement("td");
+                         td6.innerText=item.nation;
+
+                         let td7=document.createElement("td");
+                         let imge=document.createElement("img");
+                         imge.src=item.img;
+                         td7.append(imge)
+
+
+
+                         let td8=document.createElement("td");
+                         let btn=document.createElement("button")
+                         btn.innerText="Delete";
+                         td8.append(btn);
+                         btn.addEventListener("click",()=>{
+
+                              deleteData(item.id)
+
+                         })
+
+
+
+
+                         tr1.append(td1,td2,td3,td4,td5,td6,td7,td8);
+                         tbody.append(tr1);
+
+
+                    })
+               }
+               showData(arr)
+
+          </script>
+     </body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api data get and post</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        *{
+            padding: 0%;
+            margin: 0%;
+            box-sizing: border-box;
+        }
+        .main_contaner{
+            display: flex;
+            justify-content:space-evenly;
+            gap: 50px;
+            /* border: 1px solid red; */
+            padding: 50px 0 50px 0;
+        }
+/* -------------form data post----------- */
+
+        .data_post{
+            width: 40%;
+            text-align: center;
+            /* border: 1px solid rgb(0, 51, 255); */
+            padding: 20px;
+            background-color: rgba(128, 128, 128, 0.174);
+
+        }
+        h1{
+            font-size: 50px;
+            margin: 20px 0 50px 0;
+        }
+
+        form input[type=text],[type=url]{
+            font-size: 20px;
+            /* border: 1px solid red; */
+            width: 60%;
+            height: 50px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.58);
+            padding: 5px;
+            margin: 10px 0;
+
+        }
+        form button{
+            width: 30%;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            border: none;
+            outline: none;
+            color: white;
+            background-color: rgba(128, 128, 128, 0.305);
+            border-radius: 10px;
+            transition: all .5s ease-in-out;
+            cursor: pointer;
+        }
+
+        form button:hover{
+            transform: scale(1.1);
+            background-color: rgba(128, 128, 128, 0.34);
+        }
+
+
+
+
+
+/* -------------dable data get--------------- */
+        .data_get{
+            width: 50%;
+            text-align: center;
+            background-color: #9d987829;
+            /* border: 1px solid rgb(4, 255, 0); */
+
+        }
+
+
+        .data_get table{
+            border: 1px solid black;
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        .data_get table tr th{
+            font-size: 20px;
+            font-weight: 600;
+            padding: 10px;
+        }
+
+        .data_get table tr td{
+            padding: 5px;
+            font-size: 20px;
+        }
+        .data_get table tr img{
+            width: 50px;
+            height: 50px;
+
+        }
+
+        .data_get button{
+            font-size: 20px;
+            padding: 5px 10px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background-color: rgba(128, 128, 128, 0.602);
+            color: white;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="main_contaner">
+    <div class="data_post">
+        <h1>Server data post</h1>
+<form>
+<input type="text" id="name" placeholder="Enter name"><br><br>
+<input type="text" id="mob" placeholder="Enter mobile number"><br><br>
+<input type="text" id="city" placeholder="Enter city"><br><br>
+<input type="url" id="img" placeholder="Enter img url"><br><br>
+<button type="submit">Submit</button>
+</form>
+    </div>
+    <div class="data_get">
+        <h1>Server data get</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>City</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+    </div>
+</div>
+
+
+
+
+</body>
+<script>
+    let form=document.querySelector("form");
+    form.addEventListener("submit",postData);
+    async function postData(e){
+        e.preventDefault();
+
+        let data={
+            name:document.getElementById("name").value,
+            mob:document.getElementById("mob").value,
+            city:document.getElementById("city").value,
+            img:document.getElementById("img").value,
+        }
+        try {
+            let resorce=await axios.post("http://localhost:8080/data",data)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+// ---------------server data delete------------------
+
+async function detaDelete(id){
+    try {
+    let deleteresorce=await axios.delete(`http://localhost:8080/data/${id}`)
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
+// ---------------------server data get----------------------
+
+
+async function getData(){
+    try {
+        let getresorce=await axios.get("http://localhost:8080/data");
+
+        displayData(getresorce.data)
+    } catch (error) {
+
+    }
+}
+getData()
+
+function displayData(data){
+    let tbody=document.querySelector("tbody");
+    data.map((item)=>{
+
+        let tr1=document.createElement("tr")
+
+        let td1=document.createElement("td");
+        td1.innerText=item.id;
+
+        let td2=document.createElement("td");
+        td2.innerText=item.name;
+
+        let td3=document.createElement("td");
+        td3.innerText=item.mob;
+
+        let td4=document.createElement("td");
+        td4.innerText=item.city;
+
+        let td5=document.createElement("td");
+        let img=document.createElement("img");
+        img.src=item.img;
+        td5.append(img)
+
+        let td6=document.createElement("td");
+        let btn=document.createElement("button");
+        btn.innerText="Delete";
+        btn.addEventListener("click",()=>{
+            detaDelete(item.id)
+        })
+        td6.append(btn);
+
+        tr1.append(td1,td2,td3,td4,td5,td6);
+        tbody.append(tr1)
+
+    })
+}
+</script>
+</html>

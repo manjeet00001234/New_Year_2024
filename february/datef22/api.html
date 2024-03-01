@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+          <style>
+               *{
+                    padding: 0%;
+                    margin: 0%;
+                    box-sizing: border-box;
+               }
+               #cantant {
+                    padding: 20px;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 30px;
+                    cursor: pointer;
+               }
+
+               #cantant div {
+                    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+                    box-shadow: 0px 25px 80px rgba(0, 0, 0, 0.15);
+                    padding: 20px;
+                    transition: all .5s ease-in-out;
+                    line-height: 50px;
+               }
+               #cantant div:hover {
+                    transform: scale(1.05);
+               }
+
+               #cantant div img {
+                    width: 95%;
+                    height: 100px;
+               }
+               p{
+                    font-size: 20px;
+                    font-weight: 400;
+               }
+
+          </style>
+     </head>
+     <body>
+          <div id="cantant"></div>
+     </body>
+     <script>
+          //   let url = "https://restcountries.com/v3.1/all";
+          let url = "https://restcountries.com/v3.1/all";
+          let arr = [];
+          async function getData() {
+               try {
+                    let val = await fetch(url);
+                    let newVal = await val.json();
+                    arr = newVal;
+                    // console.log(arr);
+                    showData(arr);
+               } catch (error) {
+                    console.log("arrar");
+               }
+          }
+          getData(arr);
+
+          let cantant = document.getElementById("cantant");
+          function showData(data) {
+               data.map((item) => {
+                    let div1 = document.createElement("div");
+                    let img1 = document.createElement("img");
+                    img1.src = item.flags.png;
+                    let name = document.createElement("h2");
+                    name.innerText = item.name.common;
+                    let population = document.createElement("p");
+                    population.innerText = "population : " + item.population;
+                    let region = document.createElement("p");
+                    region.innerText = "region : " + item.region;
+                    let capital = document.createElement("p");
+                    capital.innerText = "capital : " + item.capital;
+
+                    div1.append(img1, name, population, region, capital);
+                    cantant.append(div1);
+               });
+          }
+          showData(arr);
+     </script>
+</html>

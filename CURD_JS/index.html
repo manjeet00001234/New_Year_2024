@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+          <style>
+               * {
+                    padding: 0%;
+                    margin: 0%;
+                    box-sizing: border-box;
+               }
+               .main_cantaner {
+                    display: flex;
+                    justify-content: space-around;
+                    gap: 20px;
+                    padding: 50px;
+               }
+               .server_data_post {
+                    width: 30%;
+                    text-align: center;
+                    height: 500px;
+                    padding: 20px 0;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+                         0 1px 2px rgba(0, 0, 0, 0.24);
+               }
+               h1 {
+                    margin: 10px 0 30px 0;
+               }
+               form input[type="text"],
+               [type="url"] {
+                    width: 80%;
+                    height: 50px;
+                    border-radius: 5px;
+                    border: none;
+                    outline: none;
+                    padding: 5px;
+                    font-size: 15px;
+                    box-shadow: 0px 4px 8px -2px rgba(9, 30, 66, 0.25),
+                         0px 0px 0px 1px rgba(9, 30, 66, 0.08);
+               }
+               form button {
+                    width: 40%;
+                    padding: 10px 0;
+                    font-size: 20px;
+                    color: white;
+                    border: none;
+                    outline: none;
+                    font-weight: 400;
+                    /* background-color: rgba(128, 128, 128, 0.337); */
+                    background-color: #7f8c8d;
+                    border-radius: 10px;
+                    transition: all 0.5s ease-in-out;
+               }
+               form button:hover {
+                    transform: scale(1.1);
+                    /* background-color: rgba(128, 128, 128, 0.551);#34495e */
+                    background-color: #34495e;
+               }
+               /* ----------------server get data------------------ */
+
+               .server_data_get {
+                    width: 60%;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+                         0 1px 2px rgba(0, 0, 0, 0.24);
+               }
+               .server_data_get h1 {
+                    text-align: center;
+                    margin: 20px 0 30px 0;
+               }
+
+               table {
+                    width: 90%;
+                    text-align: center;
+                    margin: auto;
+                    border-collapse: collapse;
+                    border: 1px solid rgba(128, 128, 128, 0.85);
+               }
+               table tr th {
+                    padding: 10px;
+                    font-size: 20px;
+                    /* background-color: rgba(128, 128, 128, 0.281); */
+                    background-color:#7f8fa6;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+                         0 1px 2px rgba(0, 0, 0, 0.24);
+                         color: white;
+               }
+               table tr td {
+                    padding: 5px;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+                         0 1px 2px rgba(0, 0, 0, 0.24);
+               }
+
+               table img {
+                    width: 50px;
+                    height: 50px;
+               }
+
+               table button {
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    /* background-color: rgba(240, 128, 128, 0.624); */
+                    background-color:#ff7675;
+                    color: white;
+                    font-size: 15px;
+                    font-weight: 400;
+                    border: none;
+                    outline: none;
+                    transition: all 0.5s ease-in-out;
+                    cursor: pointer;
+               }
+               table button:hover {
+                    transform: scale(1.1);
+                    background-color:#d63031;
+               }
+
+               /* --------------media query mobile--------------- */
+
+               @media screen and (min-width: 220px) and (max-width: 686px) {
+                    .main_cantaner {
+                         display: block;
+                         text-align: center;
+                    }
+                    .server_data_post {
+                         width: 100%;
+                         margin: auto;
+                    }
+                    .server_data_post h1 {
+                         font-size: 25px;
+                    }
+                    .server_data_get {
+                         width: 100%;
+                         margin-top: 100px;
+                    }
+                    .server_data_get h1 {
+                         font-size: 25px;
+                    }
+                    table {
+                         width: 100%;
+                    }
+                    table tr th {
+                         height: auto;
+                         display: block;
+                         padding: 10px;
+                    }
+                    table tr td {
+                         height: auto;
+                         padding: 10px;
+                         display: block;
+                    }
+               }
+
+               /* --------------media query tablet--------------- */
+
+               @media screen and (min-width: 686px) and (max-width: 1030px) {
+                    .main_cantaner {
+                         display: block;
+                    }
+                    .server_data_post {
+                         width: 100%;
+                    }
+                    .server_data_get {
+                         width: 100%;
+                         margin-top: 100px;
+                    }
+               }
+          </style>
+     </head>
+     <body>
+          <div class="main_cantaner">
+               <div class="server_data_post">
+                    <h1>New Admition Form</h1>
+                    <form>
+                         <input
+                              type="text"
+                              id="name"
+                              required
+                              placeholder="Enter name" /><br /><br />
+                         <input
+                              type="text"
+                              id="mail"
+                              required
+                              placeholder="Enter email" /><br /><br />
+                         <input
+                              type="text"
+                              id="mob"
+                              required
+                              placeholder="Enter mobile number" /><br /><br />
+                         <input
+                              type="text"
+                              id="city"
+                              required
+                              placeholder="Enter city" /><br /><br />
+                         <input
+                              type="url"
+                              id="url"
+                              required
+                              placeholder="Enter image url" /><br /><br />
+                         <button type="submit" id="button">Submit</button>
+                    </form>
+               </div>
+
+               <div class="server_data_get">
+                    <h1>Student Admition Data</h1>
+                    <table>
+                         <thead>
+                              <tr>
+                                   <th>Id</th>
+                                   <th>Name</th>
+                                   <th>Email</th>
+                                   <th>Mobile</th>
+                                   <th>City</th>
+                                   <th>Image</th>
+                                   <th>Delete</th>
+                                   <th>Edit</th>
+                              </tr>
+                         </thead>
+                         <tbody></tbody>
+                    </table>
+               </div>
+          </div>
+     </body>
+     <script>
+
+          let userId=null;
+          let form = document.querySelector("form");
+          // form.addEventListener("submit", postData);
+
+          async function postData() {
+
+               let data = {
+                    name: document.getElementById("name").value,
+                    mail: document.getElementById("mail").value,
+                    mob: document.getElementById("mob").value,
+                    city: document.getElementById("city").value,
+                    img: document.getElementById("url").value,
+               };
+
+               try {
+                    let postdataResorce = await axios.post(
+                         "http://localhost:3000/data",
+                         data
+                    );
+                    alert("Admition Data Submited");
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+
+
+          // ---------------------update data------------------
+
+
+          function newPostData(data) {
+               userId=data.id;
+               document.getElementById("name").value = data.name;
+               document.getElementById("mail").value = data.mail;
+               document.getElementById("mob").value = data.mob;
+               document.getElementById("city").value = data.city;
+               document.getElementById("url").value = data.url;
+               document.getElementById("button").innerText="Save";
+               console.log(userId);
+          }
+
+          async function updateData(){
+               let newData={
+                    name: document.getElementById("name").value,
+                    mail: document.getElementById("mail").value,
+                    mob: document.getElementById("mob").value,
+                    city: document.getElementById("city").value,
+                    img: document.getElementById("url").value,
+
+               }
+
+               try {
+                    let newDataResorce=await axios.patch(`http://localhost:3000/data/${userId}`,newData)
+
+               } catch (error) {
+                    console.log(error);
+               }
+
+          }
+
+          form.addEventListener("submit",(eve)=>{
+               eve.preventDefault();
+               if(userId){
+                    updateData();
+               }else{
+                    postData();
+               }
+          });
+
+
+
+
+          // ------------------------delete data in server-----------------
+
+          async function deleteData(id) {
+               try {
+                    let deletedataresorce = await axios.delete(
+                         `http://localhost:3000/data/${id}`
+                    );
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+
+          //   ----------------get data in server--------------
+          async function getData() {
+               try {
+                    let getdataresorce = await axios.get(
+                         "http://localhost:3000/data"
+                    );
+                    displayData(getdataresorce.data);
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+          getData();
+
+          function displayData(data) {
+               data.map((item) => {
+                    let tbody = document.querySelector("tbody");
+                    let tr = document.createElement("tr");
+
+                    let id = document.createElement("td");
+                    id.innerText = item.id;
+
+                    let name = document.createElement("td");
+                    name.innerText = item.name;
+
+                    let mail = document.createElement("td");
+                    mail.innerText = item.mail;
+
+                    let mob = document.createElement("td");
+                    mob.innerText = item.mob;
+
+                    let city = document.createElement("td");
+                    city.innerText = item.city;
+
+                    let img = document.createElement("td");
+                    let img1 = document.createElement("img");
+                    img1.src = item.img;
+                    img.append(img1);
+
+                    let btn = document.createElement("td");
+                    let btn1 = document.createElement("button");
+                    btn1.innerText = "Delete";
+                    btn.append(btn1);
+                    btn1.addEventListener("click", () => {
+                         deleteData(item.id);
+                         alert("Admition Data Deleted");
+                    });
+
+
+                    let Ebtn = document.createElement("td");
+                    let Ebtn1 = document.createElement("button");
+                    Ebtn1.innerText = " Edit";
+                    // Ebtn1.id="button";
+                    Ebtn.append(Ebtn1);
+                    // Ebtn1.style.background="green"
+                    Ebtn1.style.background="#27ae60"
+
+
+                    Ebtn1.addEventListener("click", () => {
+                         newPostData(item)
+                         alert("Admition Data Updated");
+                    });
+
+
+
+                    tr.append(id, name, mail, mob, city, img, btn,Ebtn);
+                    tbody.append(tr);
+               });
+          }
+     </script>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+          <style>
+               * {
+                    padding: 0%;
+                    margin: 0%;
+                    box-sizing: border-box;
+               }
+               .main {
+                    width: 98%;
+                    margin: 100px auto;
+
+                    padding: 100px;
+                    background-color: rgba(128, 128, 128, 0.991);
+                    transform: skewY(-5deg);
+               }
+               .contant {
+                    margin: auto;
+                    width: 90%;
+                    color: white;
+                    transform: skewY(3deg);
+                    font-size: 20px;
+                    line-height: 30px;
+               }
+
+
+               body {
+                    background-color: red;
+                    animation-name: example;
+                    animation-duration:10s;
+                      animation-direction: alternate;
+                    /* animation-duration: time|initial|inherit; */
+               }
+
+               @keyframes example {
+                    /* from {
+                         background-color: red;
+                    }
+                    to {
+                         background-color: yellow;
+                    } */
+                    0%{
+                        background-color: #fff;
+                    }
+                    20%{
+                        background-color: #ae3838;
+                    }
+                    40%{
+                        background-color: #27b95c;
+                    }
+                    60%{
+                        background-color: #1210a3;
+                    }
+                    80%{
+                        background-color: #dfdf0a;
+                    }
+                    100%{
+                        background-color: #ad12d4;
+                    }
+               }
+          </style>
+     </head>
+     <body>
+          <div class="main">
+               <div class="contant">
+                    <p>
+                         Lorem ipsum, dolor sit amet consectetur adipisicing
+                         elit. Corporis iste repellendus amet rerum! Sunt
+                         dolorum dignissimos labore, earum laudantium a, est
+                         error nobis explicabo reprehenderit laboriosam sed
+                         minima eligendi? Illo! Lorem ipsum, dolor sit amet
+                         consectetur adipisicing elit. Ipsam sit similique
+                         praesentium mollitia aliquam odio nihil ea quae est vel
+                         sunt quisquam molestiae voluptate animi aliquid
+                         recusandae, unde, voluptatibus cupiditate. Asperiores
+                         illum, voluptates reiciendis optio cum consectetur ad
+                         minima quisquam. Nemo ab similique velit officia
+                         adipisci est eaque minus dolorem mollitia eligendi,
+                         molestias, at sunt deleniti! Modi at obcaecati
+                         quisquam. Ipsa asperiores fugit laudantium et? Quaerat,
+                         nemo optio dolorum praesentium excepturi quo. Nostrum
+                         inventore, nam recusandae aliquid ducimus laboriosam
+                         sapiente nobis sit tenetur veritatis repellendus
+                         dolorum reiciendis quo, cumque accusantium? Nemo magni
+                         in nesciunt nobis mollitia non nisi deleniti nam ipsum
+                         tempora ducimus dolorum dicta nihil officia numquam
+                         repellat, distinctio magnam! Mollitia molestias alias
+                         ipsa saepe voluptatum atque dolorem. Consequatur?
+                         Tempora sed dicta explicabo nesciunt sequi iste dolorum
+                         necessitatibus eligendi consequuntur, beatae modi
+                         commodi reprehenderit praesentium ratione atque enim
+                         fuga, sapiente dignissimos, labore deserunt saepe
+                         inventore. Libero nesciunt omnis nobis! Ex recusandae
+                         mollitia laboriosam quod nihil iste atque sequi quia
+                         explicabo, officiis cupiditate magnam hic vero nemo.
+                         Illum, harum rem ducimus, quam incidunt facilis modi ut
+                         tenetur esse ea libero!
+                    </p>
+               </div>
+          </div>
+
+          <script>
+               {
+                    let obj = {
+                         neme: "manjeet",
+                         age: 25,
+                         city: "jaipur",
+                    };
+                    console.log(obj);
+               }
+
+               {
+                    function emp(name, age) {
+                         this.Name = name;
+                         this.Age = age;
+                    }
+                    let newEmp = new emp("manjeet", 25);
+                    console.log(newEmp);
+               }
+
+               {
+                    function emp(name, age) {
+                         return {
+                              Name: name,
+                              Age: age,
+                         };
+                    }
+                    let newEmp = emp("manjeet", 20);
+                    console.log(newEmp, "37");
+               }
+
+               {
+                    class emp {
+                         constructor(name, age) {
+                              this.Name = name;
+                              this.Age = age;
+                         }
+                    }
+                    let newemp = new emp("manjeet", 25);
+                    console.log(newemp);
+               }
+
+               {
+                    class par extends emp {
+                         constructor(name, age, city) {
+                              super(name, age);
+                              this.city = city;
+                         }
+                    }
+                    let newper = new par("manjeet", 20, "jaipur");
+                    console.log(newper);
+               }
+          </script>
+     </body>
+</html>
