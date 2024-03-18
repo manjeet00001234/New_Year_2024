@@ -242,7 +242,7 @@
 
                try {
                     let postdataResorce = await axios.post(
-                         "http://localhost:3000/data",
+                         "https://fair-gray-dove-kilt.cyclic.app/data",
                          data
                     );
                     alert("Admition Data Submited");
@@ -277,7 +277,7 @@
                }
 
                try {
-                    let newDataResorce=await axios.patch(`http://localhost:3000/data/${userId}`,newData)
+                    let newDataResorce=await axios.patch(`https://fair-gray-dove-kilt.cyclic.app/data/${userId}`,newData)
 
                } catch (error) {
                     console.log(error);
@@ -302,7 +302,7 @@
           async function deleteData(id) {
                try {
                     let deletedataresorce = await axios.delete(
-                         `http://localhost:3000/data/${id}`
+                         `https://fair-gray-dove-kilt.cyclic.app/data/${id}`
                     );
                } catch (error) {
                     console.log(error);
@@ -313,7 +313,7 @@
           async function getData() {
                try {
                     let getdataresorce = await axios.get(
-                         "http://localhost:3000/data"
+                         "https://fair-gray-dove-kilt.cyclic.app/data"
                     );
                     displayData(getdataresorce.data);
                } catch (error) {

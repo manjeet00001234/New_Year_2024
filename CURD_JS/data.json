@@ -1,3 +1,52 @@
 {
-  "data": []
+  "data": [
+    {
+      "id": "4108",
+      "name": "ramu",
+      "mail": "lasdjfl@gmail.com",
+      "mob": "9898252536",
+      "city": "jaipur",
+      "img": "https://images.meesho.com/images/products/318978126/fpfrq_400.webp"
+    },
+    {
+      "id": "86a8",
+      "name": "manjeet singh",
+      "mail": "manjeet@gmail.com",
+      "mob": "9000156485",
+      "city": "JHUNJHUNU",
+      "img": "https://images.meesho.com/images/products/318978126/fpfrq_400.webp"
+    },
+    {
+      "id": "6696",
+      "name": "deepender singh",
+      "mail": "deepsingh@gmail.com",
+      "mob": "98765482365",
+      "city": "JHUNJHUNU",
+      "img": "https://images.meesho.com/images/products/318978126/fpfrq_400.webp"
+    },
+    {
+      "id": "fb60",
+      "name": "madan lal",
+      "mail": "madan@gmail.com",
+      "mob": "9898252536",
+      "city": "jaipur ",
+      "img": "https://images.meesho.com/images/products/318978126/fpfrq_400.webp"
+    },
+    {
+      "id": "c7e3",
+      "name": "sunil kumar",
+      "mail": "sunil@gmail.com",
+      "mob": "5684756845",
+      "city": "jaipur",
+      "img": "https://images.meesho.com/images/products/318978126/fpfrq_400.webp"
+    },
+    {
+      "id": "0dfe",
+      "name": "Watch",
+      "mail": "madan@gmail.com",
+      "mob": "9898252536",
+      "city": "jaipur rgerygrtywrt",
+      "img": "https://images.meesho.com/images/products/318978126/fpfrq_400.webp"
+    }
+  ]
 }

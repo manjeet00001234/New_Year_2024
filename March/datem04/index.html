@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+          <style>
+            *{
+                padding: 0%;
+                margin: 0%;
+                box-sizing: border-box;
+            }
+               #main {
+
+                    width: 40%;
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+               }
+               .btn{
+                float: right;
+                margin-top: 0px;
+                border: none;
+                outline: none;
+                font-size: 50px;
+                cursor: pointer;
+                background-color: white;
+               }
+               img{
+                border-radius: 10px;
+                padding: 30px;
+               }
+          </style>
+     </head>
+     <body>
+          <div id="main">
+            <button onclick="myGreeting()" class="btn"><i class="fa-solid fa-xmark"></i></button>
+            <img src="img.jpg" alt="">
+
+          </div>
+     </body>
+     <script>
+
+    const myTimeout = setTimeout(myGreeting, 5000);
+
+    function myGreeting() {
+        document.getElementById("main").style.display="none";
+}
+
+
+     </script>
+</html>

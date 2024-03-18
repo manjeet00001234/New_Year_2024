@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+          <link
+               rel="stylesheet"
+               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+          <style>
+               * {
+                    padding: 0%;
+                    margin: 0%;
+                    box-sizing: border-box;
+               }
+               .main {
+                    display: flex;
+                    justify-content: space-around;
+                    padding-top: 50px;
+               }
+               /* ---------------form--------------- */
+               .form_main {
+                    text-align: center;
+                    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.02),
+                         0px 0px 0px 1px rgba(27, 31, 35, 0.15);
+                    padding: 20px;
+                    width: 30%;
+                    background-color: rgba(245, 222, 179, 0.161);
+               }
+               .form_main h1 {
+                    margin: 30px 0 50px 0;
+                     text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               /* 0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15); */
+               }
+
+               form input[type="text"],
+               [type="url"],
+               [type="email"] {
+                    width: 70%;
+                    height: 40px;
+                    border-radius: 10px;
+                    border: none;
+                    outline: none;
+                    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px 0px,
+                    rgba(0, 0, 0, 0.24) 0px 1px 2px 0px;
+                    padding: 5px;
+                    font-size: 17px;
+                    margin-top: 20px;
+               }
+
+               .form_main button {
+                    width: 30%;
+                    padding: 10px 20px;
+                    border-radius: 10px;
+                    font-size: 18px;
+                    color: white;
+                    border: none;
+                    outline: none;
+                    background-color: #3498dba9;
+
+                    transition: all 0.5s ease-in-out;
+               }
+
+               .form_main button:hover {
+                    transform: scale(1.1);
+                    background-color: #2980b9;
+               }
+
+               /* ---------------table--------------- */
+
+               .table_main {
+                    text-align: center;
+                    width: 60%;
+                    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.02),
+                         0px 0px 0px 1px rgba(27, 31, 35, 0.15);
+                         padding-bottom: 50px;
+               }
+               .table_main h1 {
+                    margin: 20px 0 50px 0;
+                     text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               /* 0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15); */
+               }
+               table {
+                    width: 95%;
+                    border-collapse: collapse;
+                    margin: auto;
+               }
+
+               table tr th {
+                    padding: 20px;
+                    font-size: 18px;
+                    background-color: #596275;
+                    color: white;
+               }
+
+               table tr td img {
+                    padding: 2px;
+                    width: 50px;
+                    height: 50px;
+               }
+
+               #delbtn {
+                    padding: 10px;
+                    border-radius: 10px;
+                    border: none;
+                    outline: none;
+                    transition: all 0.5s ease-in-out;
+                    background-color: #ff7979;
+                    color: white;
+                    cursor: pointer;
+               }
+               #delbtn:hover {
+                    transform: scale(1.05);
+                    background-color: #eb4d4b;
+               }
+               #editbtn {
+                    padding: 10px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    border: none;
+                    outline: none;
+                    transition: all 0.5s ease-in-out;
+                    background-color: #4cd137;
+                    color: white;
+               }
+               #editbtn:hover {
+                    transform: scale(1.05);
+                    background-color: #44bd32;
+               }
+
+
+
+
+
+
+                 #main {
+background-color: rgba(0, 128, 0, 0.894);
+                    width: 40%;
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+               }
+               .btn{
+                float: right;
+                margin-top: 0px;
+                border: none;
+                outline: none;
+                font-size: 50px;
+                cursor: pointer;
+                background-color: white;
+               }
+               img{
+                border-radius: 10px;
+                padding: 30px;
+               }
+               h2{
+                    margin:20px auto;
+                    text-align: center;
+                    color: white;
+               }
+          </style>
+     </head>
+     <body>
+          <div class="main">
+               <div class="form_main">
+                    <h1>Student's Application Form</h1>
+                    <form>
+                         <input
+                              type="text"
+                              id="name"
+                              required
+                              placeholder="Enter name" /><br /><br />
+                         <input
+                              type="email"
+                              id="mail"
+                              required
+                              placeholder="Enter email" /><br /><br />
+                         <input
+                              type="text"
+                              id="mob"
+                              required
+                              placeholder="Enter mobile number" /><br /><br />
+                         <input
+                              type="text"
+                              id="city"
+                              required
+                              placeholder="Enter city" /><br /><br />
+                         <input
+                              type="url"
+                              id="img"
+                              required
+                              placeholder="Enter img url" /><br /><br />
+                         <button type="submit" id="submit">Submit</button>
+                    </form>
+               </div>
+
+               <div class="table_main">
+                    <table border="1">
+                         <h1>Student's Submited Data</h1>
+                         <thead>
+                              <tr>
+                                   <th>Id</th>
+                                   <th>Name</th>
+                                   <th>Email</th>
+                                   <th>Mob Number</th>
+                                   <th>City</th>
+                                   <th>image</th>
+                                   <th>Delete</th>
+                                   <th>Edit</th>
+                              </tr>
+                         </thead>
+                         <tbody></tbody>
+                    </table>
+               </div>
+          </div>
+
+
+
+
+
+          <div id="main">
+            <button onclick="myGreeting()" class="btn"><i class="fa-solid fa-xmark"></i></button>
+            <!-- <img src="img.jpg" alt=""> -->
+               <h2>Your data is submited</h2>
+          </div>
+     </body>
+     <script>
+
+const myTimeout = setInterval(myGreeting, 5000);
+
+
+    function myGreeting() {
+        document.getElementById("main").style.display="none";
+}
+
+
+
+
+
+
+
+
+
+
+          let form = document.querySelector("form");
+
+          let userId = null;
+          async function MyFunc() {
+               let obj = {
+                    name: document.getElementById("name").value,
+                    mail: document.getElementById("mail").value,
+                    mob: document.getElementById("mob").value,
+                    city: document.getElementById("city").value,
+                    img: document.getElementById("img").value,
+               };
+               console.log(obj);
+               try {
+                    let res = await axios.post(
+                         "http://localhost:8080/server",
+                         obj
+                    );
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+
+          // -------------------------server data update------------------
+
+          function newmyFunc(data) {
+               userId = data.id;
+               document.getElementById("name").value = data.name;
+               document.getElementById("mail").value = data.mail;
+               document.getElementById("mob").value = data.mob;
+               document.getElementById("city").value = data.city;
+               document.getElementById("img").value = data.img;
+          }
+
+          async function updateData() {
+               let newObj = {
+                    name: document.getElementById("name").value,
+                    mail: document.getElementById("mail").value,
+                    mob: document.getElementById("mob").value,
+                    city: document.getElementById("city").value,
+                    img: document.getElementById("img").value,
+               };
+               try {
+                    let newres = await axios.patch(
+                         `http://localhost:8080/server/${userId}`,
+                         newObj
+                    );
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+
+          form.addEventListener("submit", (eve) => {
+               eve.preventDefault();
+               if (userId) {
+                    updateData();
+                    alert("update data submited");
+               } else {
+                    MyFunc();
+                    alert("Application dat submited");
+               }
+          });
+
+          // -------------------------server delete data----------------------
+          async function deleteFunc(id) {
+               try {
+                    let deletres = await axios.delete(
+                         `http://localhost:8080/server/${id}`
+                    );
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+
+          //   ---------------------------server gat data---------------------
+
+          async function getData() {
+               try {
+                    let getres = await axios.get(
+                         "http://localhost:8080/server"
+                    );
+                    displayData(getres.data);
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+          getData();
+
+          async function displayData(data1) {
+               let cont = 0;
+               let tbody = document.querySelector("tbody");
+               data1.map((item) => {
+                    cont++;
+
+                    let tr1 = document.createElement("tr");
+                    if (cont % 2 == 0) {
+                         tr1.style.backgroundColor = "#b0891d22";
+                    } else {
+                         tr1.style.backgroundColor = "#f1f2f6";
+                    }
+
+                    let td1 = document.createElement("td");
+                    td1.innerText = item.id;
+                    td1.style.color = "blue";
+
+                    let td2 = document.createElement("td");
+                    td2.innerText = item.name;
+
+                    let td3 = document.createElement("td");
+                    td3.innerText = item.mail;
+
+                    let td4 = document.createElement("td");
+                    td4.innerText = item.mob;
+
+                    let td5 = document.createElement("td");
+                    td5.innerText = item.city;
+
+                    let td6 = document.createElement("td");
+                    let imge = document.createElement("img");
+                    imge.src = item.img;
+                    td6.append(imge);
+
+                    let td7 = document.createElement("td");
+                    let delBtn = document.createElement("button");
+                    delBtn.id = "delbtn";
+                    delBtn.innerHTML =
+                         "Delete" +
+                         " " +
+                         '<i class="fa-regular fa-trash-can"></i>';
+
+                    delBtn.addEventListener("click", () => {
+                         deleteFunc(item.id);
+                         alert("submited data delete");
+                    });
+                    td7.append(delBtn);
+
+                    let td8 = document.createElement("td");
+                    let editBtn = document.createElement("button");
+                    editBtn.innerHTML =
+                         "Edit" +
+                         " " +
+                         '<i class="fa-regular fa-pen-to-square"></i>';
+                    editBtn.id = "editbtn";
+
+                    editBtn.addEventListener("click", () => {
+                         newmyFunc(item);
+
+                         alert("you'r submited data update");
+                         document.getElementById("submit").innerText = "save";
+                    });
+                    td8.append(editBtn);
+
+                    tr1.append(td1, td2, td3, td4, td5, td6, td7, td8);
+                    tbody.append(tr1);
+               });
+               console.log(cont.length);
+          }
+     </script>
+</html>
