@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CURD</title>
+          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+<form>
+    <input type="text" id="name" placeholder="Enter name"><br><br>
+    <input type="email" id="mail" placeholder="Enter Email"><br><br>
+    <input type="text" id="age" placeholder="Enter Age"><br><br>
+    <input type="text" id="city" placeholder="Enter city"><br><br>
+    <button type="submit">Submit</button>
+</form>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>City</th>
+            <th>Delete</th>
+            <th>Edid</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</body>
+<script>
+    let form=document.querySelector("form");
+    form.addEventListener("submit",postData);
+    async function postData(){
+    let obj={
+            name:document.getElementById("name").value,
+            mail:document.getElementById("mail").value,
+            age:document.getElementById("age").value,
+            city:document.getElementById("city").value,
+        }
+    try {
+        let postres=await axios.post("http://localhost:3000/data",obj)
+
+
+    } catch (error) {
+        console.log(error);
+    }
+
+    }
+
+
+
+    // ********************getData function***************************
+
+    async function getData(){
+        try {
+            let getres=await axios.get("http://localhost:3000/data")
+            displayData(getres.data)
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    getData()
+
+
+
+    // ***************************delete function*********************
+
+    async function deleteData(id){
+        try {
+            await axios.delete(`http://localhost:3000/data/${id}`)
+        } catch (error) {
+console.log(error);
+        }
+    }
+
+    // ******************display data function******************
+
+let tbody=document.querySelector("tbody");
+function displayData(data){
+    data.map((item)=>{
+        let tr=document.createElement("tr");
+        let td1=document.createElement("td");
+        td1.innerText=item.id;
+        let td2=document.createElement("td");
+        td2.innerText=item.name;
+        let td3=document.createElement("td");
+        td3.innerText=item.mail;
+        let td4=document.createElement("td");
+        td4.innerText=item.age;
+        let td5=document.createElement("td");
+        td5.innerText=item.city;
+        let td6=document.createElement("td");
+        let btnD=document.createElement("button");
+        btnD.innerText="Delete";
+        btnD.addEventListener("click",()=>{
+            deleteData(item.id)
+        })
+        td6.append(btnD)
+        let td7=document.createElement("td");
+        let btnE=document.createElement("button");
+        btnE.innerText="Edit";
+        td7.append(btnE)
+        tr.append(td1,td2,td3,td4,td5,td6,td7);
+        tbody.append(tr);
+    })
+}
+
+
+</script>
+
+
+</html>

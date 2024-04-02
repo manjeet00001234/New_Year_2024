@@ -1,11 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+          <style>
+               #filter_short {
+                    display: flex;
+                    justify-content: space-evenly;
+                    padding: 20px;
+                    background-color: rgba(128, 128, 128, 0.104);
+               }
+               #filter_short select {
+                    font-size: 18px;
+                    padding: 10px 20px;
+                    border-radius: 10px;
+                    width: 200px;
+               }
+               #contaner {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 50px;
+                    text-align: center;
+               }
+               #contaner div {
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+                         0 1px 2px rgba(0, 0, 0, 0.24);
+               }
+               #contaner div img {
+                    width: 90%;
+                    height: 200px;
+               }
+          </style>
+     </head>
+     <body>
+          <div id="filter_short">
+               <select id="filter">
+                    <option value="">--select--</option>
+                    <option value="men's clothing">men</option>
+                    <option value="women's clothing">women</option>
+                    <option value="jewelery">jewelery</option>
+               </select>
+
+               <div>
+                    <input
+                         type="search"
+                         id="search"
+                         placeholder="search" /><button onclick="searchValue()">
+                         Search
+                    </button>
+               </div>
+
+               <select id="short">
+                    <option value="">--select--</option>
+                    <option value="LTH">LTH</option>
+                    <option value="HTL">HTL</option>
+               </select>
+          </div>
+
+          <div id="contaner"></div>
+     </body>
+     <script>
+          let arr;
+
+          async function getValue() {
+               try {
+                    let res = await axios.get(
+                         "https://fakestoreapi.com/products"
+                    );
+                    arr = res.data;
+                    console.log(arr);
+                    displayData(arr);
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+          getValue();
+
+          // ************************filter***********************************
+
+          let filter = document.getElementById("filter");
+          filter.addEventListener("change", filterFunction);
+          function filterFunction() {
+               let filterValue = document.getElementById("filter").value;
+               if (filterValue == "") {
+                    displayData(arr);
+               } else {
+                    let filterData = arr.filter((item) => {
+                         return item.category == filterValue;
+                    });
+                    displayData(filterData);
+               }
+          }
+
+          // ******************short****************************************
+
+          let short = document.getElementById("short");
+          short.addEventListener("change", shortFunction);
+          function shortFunction() {
+               let shortValue = document.getElementById("short").value;
+               if (shortValue == "") {
+                    displayData(arr);
+               } else {
+                    let shortData;
+                    if (shortValue == "LTH") {
+                         shortData = arr.slice().sort((a, b) => {
+                              return a.price - b.price;
+                         });
+                    } else if ((shortValue = "HTL")) {
+                         shortData = arr.slice().sort((a, b) => {
+                              return b.price - a.price;
+                         });
+                    }
+                    displayData(shortData);
+               }
+          }
+
+          let search = document.getElementById("search");
+          // let srhbtn = document.getElementById("srhbtn");
+
+          search.addEventListener("input",searchValue)
+
+               function searchValue() {
+                    let newvalue = document.getElementById("search").value;
+                    let searchFilterValue = arr.filter((ele) => {
+                         return ele.title.toLowerCase().includes(newvalue);
+                    });
+                    displayData(searchFilterValue);
+               }
+
+
+          let contaner = document.getElementById("contaner");
+          function displayData(data1) {
+               contaner.innerHTML = "";
+               data1.map((item) => {
+                    let div = document.createElement("div");
+
+                    let id = document.createElement("h2");
+                    id.innerText = item.id;
+                    // console.log(id);
+                    let img = document.createElement("img");
+                    img.src = item.image;
+
+                    let category = document.createElement("h3");
+                    category.innerText = item.category;
+
+                    let pric = document.createElement("h3");
+                    pric.innerText = item.price;
+
+                    div.append(id, img, category, pric);
+                    contaner.append(div);
+               });
+          }
+          displayData();
+     </script>
 </html>

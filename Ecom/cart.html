@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Ecom Cart</title>
+          <style>
+               .main_div {
+                    width: 50%;
+                    margin: 50px auto;
+                    display: flex;
+                    justify-content: space-around;
+
+                    padding: 20px;
+                    align-items: center;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+                         0 1px 2px rgba(0, 0, 0, 0.24);
+               }
+               .div1 {
+                    width: 60%;
+               }
+               .div1 img {
+                    width: 20%;
+                    cursor: pointer;
+               }
+
+               .div2 {
+                    justify-content: space-between;
+               }
+               .div2 button:nth-child(1) {
+                    font-size: 15px;
+                    margin: 10px;
+                    padding: 10px 20px;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    transition: all 0.5s ease-in-out;
+                    background-color: rgba(178, 20, 20, 0.648);
+                    color: white;
+               }
+
+               .div2 button:nth-child(1):hover {
+                    transform: scale(1.05);
+                    background-color: rgb(178, 20, 20);
+
+                    color: white;
+               }
+
+               #check_btn {
+                    display: block;
+                    margin: auto;
+                    width: 10%;
+                    padding: 10px 20px;
+                    font-size: 20px;
+                    color: #fff;
+                    background-color: rgba(0, 128, 0, 0.57);
+                    border: none;
+                    outline: none;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: all 0.5s ease-in-out;
+               }
+               #check_btn:hover {
+                    transform: scale(1.05);
+                    background-color: rgba(0, 128, 0, 0.932);
+               }
+          </style>
+     </head>
+     <body>
+          <div id="cantaner"></div>
+          <button id="check_btn">CheckOut</button>
+     </body>
+     <script>
+          let cartValue = JSON.parse(localStorage.getItem("cart")) || [];
+
+          let cantaner = document.getElementById("cantaner");
+
+          function displayData(data) {
+               cantaner.innerHTML = "";
+               data.forEach((item, index) => {
+                    if (!item.quantity || item.quantity < 1) {
+                         item.quantity = 1;
+                    }
+
+                    let main_div = document.createElement("div");
+                    main_div.classList.add("main_div");
+
+                    let div1 = document.createElement("div");
+                    div1.classList.add("div1");
+
+                    let img = document.createElement("img");
+                    img.src = item.image;
+
+                    let hotelname = document.createElement("p");
+                    hotelname.innerText = `Hotel Name:- ${item.HotelName}`;
+
+                    let city = document.createElement("p");
+                    city.innerText = `City:- ${item.city}`;
+
+                    let price = document.createElement("p");
+                    price.innerText = `Price:- ${item.price * item.quantity}`;
+
+                    let mbtn = document.createElement("button");
+                    mbtn.innerText = "-";
+                    mbtn.style.margin = "3px";
+                    mbtn.addEventListener("click", () => {
+                         if (item.quantity > 1) {
+                              item.quantity--;
+                              if (item.quantity === 1) {
+                                   mbtn.disabled = true;
+                              } else if (item.quantity > 1) {
+                                   mbtn.disabled = false;
+                              }
+                              qbtn.innerText = item.quantity;
+                              displayData(cartValue);
+                         }
+                    });
+
+                    let qbtn = document.createElement("button");
+                    qbtn.innerText = item.quantity;
+                    qbtn.style.margin = "3px";
+                    qbtn.disabled = "true";
+
+                    let pbtn = document.createElement("button");
+                    pbtn.innerText = "+";
+                    pbtn.style.margin = "3px";
+
+                    pbtn.addEventListener("click", () => {
+                         item.quantity++;
+                         qbtn.innerText = item.quantity;
+
+                         displayData(cartValue);
+                    });
+
+                    let div2 = document.createElement("div");
+                    div2.classList.add("div2");
+
+                    let reamve = document.createElement("button");
+                    reamve.innerText = "remove";
+                    reamve.addEventListener("click", () => {
+                         deleteCart(cartValue, index);
+                         alert("Item removed from cart.");
+                         if (cartValue.length == "") {
+                              window.location.href = "index.html";
+                         }
+                    });
+
+                    div2.append(reamve);
+
+                    div1.append(img, hotelname, city, price, mbtn, qbtn, pbtn);
+                    main_div.append(div1, div2);
+                    cantaner.append(main_div);
+               });
+               localStorage.setItem("cart", JSON.stringify(cartValue));
+          }
+          function deleteCart(data, index) {
+               data.splice(index, 1);
+               localStorage.setItem("cart", JSON.stringify(data));
+               displayData(data);
+          }
+
+          let check_btn = document.getElementById("check_btn");
+          check_btn.addEventListener("click", () => {
+               window.location.href = "./payment.html";
+          });
+
+          displayData(cartValue);
+     </script>
+</html>

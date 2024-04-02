@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0" />
+          <title>Ecom Website</title>
+          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+          <style>
+               * {
+                    padding: 0%;
+                    margin: 0%;
+                    box-sizing: border-box;
+               }
+               .nav {
+                    display: flex;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    /* border: 1px solid gray; */
+                    background-color: rgba(128, 128, 128, 0.176);
+               }
+               .logo {
+                    width: 20%;
+                    /* border: 1px solid red; */
+               }
+               .logo img {
+                    width: 35%;
+                    height: 70px;
+                    display: flex;
+                    margin: auto;
+                    /* border: 1px solid black; */
+               }
+
+               .filter {
+                    width: 25%;
+                    /* border: 1px solid green; */
+                    margin: auto;
+                    text-align: center;
+               }
+               .filter select {
+                    width: 50%;
+                    padding: 10px;
+                    font-size: 20px;
+                    border-radius: 5px;
+                    border: none;
+                    outline: none;
+               }
+               .sort {
+                    width: 25%;
+                    /* border: 1px solid blue; */
+                    margin: auto;
+                    text-align: center;
+               }
+               .sort select {
+                    width: 50%;
+                    padding: 10px;
+                    font-size: 20px;
+                    border-radius: 5px;
+                    border: none;
+                    outline: none;
+               }
+               .search {
+                    width: 25%;
+                    border: none;
+                    outline: none;
+                    margin: auto;
+                    text-align: center;
+               }
+               .search input {
+                    width: 50%;
+                    padding: 10px;
+                    font-size: 20px;
+                    border-radius: 5px;
+                    border: none;
+                    outline: none;
+               }
+               .search button {
+                    width: 20%;
+                    padding: 8px;
+                    font-size: 20px;
+                    border-radius: 5px;
+                    border: none;
+                    outline: none;
+               }
+               .search button a {
+                    text-decoration: none;
+               }
+
+               /* *********************cantaner******************* */
+
+               #cantaner {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                    gap: 50px;
+                    width: 95%;
+                    margin: 50px auto;
+               }
+               #cantaner div {
+                    padding: 50px 10px;
+                    text-align: center;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+                         0 1px 2px rgba(0, 0, 0, 0.24);
+                    line-height: 50px;
+               }
+               #cantaner div img {
+                    width: 90%;
+                    height: 200px;
+                    margin: auto;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    transition: all 0.5s ease-in-out;
+               }
+
+               #cantaner div img:hover {
+                    transform: scale(1.05);
+               }
+
+               #cantaner div button {
+                    font-size: 15px;
+                    padding: 10px 15px;
+                    border: none;
+                    outline: none;
+                    border-radius: 10px;
+                    background-color: #3498db;
+                    cursor: pointer;
+                    transition: all 0.5s ease-in-out;
+               }
+
+               #cantaner div button:hover {
+                    transform: scale(1.05);
+               }
+               .pagination_div {
+                    /* margin: auto; */
+                    text-align: center;
+                    margin: 50px 0;
+               }
+               #prevBtn {
+                    padding: 10px 20px;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    background-color: #9c59b6e1;
+                    color: #fff;
+                    transition: all .5s ease-in-out;
+                    font-size: 15px;
+               }
+               #prevBtn:hover {
+                    transform: scale(1.05);
+                    background-color: #9b59b6;
+               }
+
+               #pagenumber {
+                    padding: 10px 15px;
+                    border: none;
+                    outline: none;
+                    border-radius: 10px;
+                    background-color: #2ecc71;
+                     cursor: not-allowed;
+                       opacity: 0.6;
+                       font-weight: 600;
+                    font-size: 15px;
+
+
+               }
+               #nextBtn {
+                    padding: 10px 15px;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    /* background-color: #9b59b6; */
+                    background-color: #3498dbe1;
+                    color: #fff;
+                    transition: all 0.5s ease-in-out;
+                    font-size: 15px;
+
+               }
+
+               #nextBtn:hover {
+                    transform: scale(1.05);
+                    background-color: #3498db;
+               }
+          </style>
+     </head>
+     <body>
+          <div class="nav">
+               <div class="logo">
+                    <a href=""><img src="./image/logo_img.png" alt="" /></a>
+               </div>
+               <div class="filter">
+                    <select id="filter">
+                         <option value="">--select--</option>
+                         <option value="goa">Goa</option>
+                         <option value="delhi">Delhi</option>
+                         <option value="banglore">Banglore</option>
+                         <option value="jaipur">Jaipur</option>
+                         <option value="mumbai">Mumbai</option>
+                         <option value="shimla">Shimla</option>
+                         <option value="ooty">Ooty</option>
+                    </select>
+               </div>
+               <div class="sort">
+                    <select id="sort">
+                         <option value="">--select--</option>
+                         <option value="LTH">LTH</option>
+                         <option value="HTL">HTL</option>
+                    </select>
+               </div>
+               <div class="search">
+                    <input id="search" type="search" placeholder="search" />
+                    <button>
+                         <a id="cart" href="./cart.html">🛒:0</a>
+                    </button>
+               </div>
+          </div>
+          <div id="cantaner"></div>
+
+          <div class="pagination_div">
+               <button id="prevBtn" onclick="changePage (currentPage-1)">
+                    &#8592; &nbsp; Previous
+               </button>
+
+               <button id="pagenumber"></button>
+
+               <button id="nextBtn" onclick="changePage (currentPage+1)">
+                    Next &nbsp; &#8594;
+               </button>
+          </div>
+     </body>
+
+     <script>
+          let arr = [];
+          let currentPage = 1;
+          let itemsPerPage = 10;
+          let filteredData = [];
+
+          async function getData() {
+               try {
+                    let getRes = await axios.get("https://helpful-gray-rooster.cyclic.app/hotels");
+                    // let getRes = await axios.get("http://localhost:8080/data");
+                    arr = getRes.data;
+                    filteredData = arr;
+                    displayData();
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+          getData();
+
+          function displayData() {
+               let cantaner = document.getElementById("cantaner");
+               cantaner.innerHTML = "";
+               let startIndex = (currentPage - 1) * itemsPerPage;
+               let endIndex = startIndex + itemsPerPage;
+               let currentItems = filteredData.slice(startIndex, endIndex);
+               currentItems.forEach((item) => {
+                    let div = document.createElement("div");
+                    let id = document.createElement("h2");
+                    id.innerText = `Id:- ${item.id}`;
+                    let img = document.createElement("img");
+                    img.src = item.image;
+                    let hotalName = document.createElement("h3");
+                    hotalName.innerText = `HotelName:- ${item.HotelName.slice(
+                         0,
+                         5
+                    )}`;
+                    let city = document.createElement("h3");
+                    city.innerText = `City:- ${item.city}`;
+                    let price = document.createElement("h3");
+                    price.innerText = `Price:- ${item.price}`;
+                    let btn = document.createElement("button");
+                    btn.innerText = "Add To Cart";
+                    btn.addEventListener("click", () => {
+                         addToCart(item);
+                         btn.innerText = "Go To Cart";
+                         btn.style.color = "#fff";
+                         updateCartValue();
+                    });
+                    div.append(id, img, hotalName, city, price, btn);
+                    cantaner.append(div);
+               });
+               setupPagination();
+          }
+
+          function setupPagination() {
+               const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+               let pagenumber = document.getElementById("pagenumber");
+               pagenumber.innerText = currentPage;
+               const prevBtn = document.getElementById("prevBtn");
+               const nextBtn = document.getElementById("nextBtn");
+               prevBtn.disabled = currentPage === 1;
+               nextBtn.disabled = currentPage === totalPages;
+          }
+
+          function changePage(page) {
+               currentPage = Math.max(
+                    1,
+                    Math.min(
+                         page,
+                         Math.ceil(filteredData.length / itemsPerPage)
+                    )
+               );
+               displayData();
+          }
+
+          let filterValue = document.getElementById("filter");
+          filterValue.addEventListener("change", handleFilter);
+
+          function handleFilter() {
+               let filterOption = document.getElementById("filter").value;
+               filteredData = arr.filter((item) => {
+                    return filterOption === "" || item.city === filterOption;
+               });
+               currentPage = 1;
+               displayData();
+          }
+
+          let sortValue = document.getElementById("sort");
+          sortValue.addEventListener("change", handleSort);
+
+          function handleSort() {
+               let shortOption = document.getElementById("sort").value;
+               let finalSortValue;
+               if (shortOption === "LTH") {
+                    finalSortValue = filteredData
+                         .slice()
+                         .sort((a, b) => a.price - b.price);
+               } else if (shortOption === "HTL") {
+                    finalSortValue = filteredData
+                         .slice()
+                         .sort((a, b) => b.price - a.price);
+               } else {
+                    finalSortValue = filteredData;
+               }
+               displayData(finalSortValue);
+          }
+
+          let searchValue = document.getElementById("search");
+          searchValue.addEventListener("input", handleSearch);
+
+          function handleSearch() {
+               let searchQuery = document
+                    .getElementById("search")
+                    .value.toLowerCase();
+               filteredData = arr.filter((item) => {
+                    return item.HotelName.toLowerCase().includes(searchQuery);
+               });
+               currentPage = 1;
+               displayData();
+          }
+
+          function addToCart(data) {
+               let cartValue = JSON.parse(localStorage.getItem("cart")) || [];
+               let isAlreadyInCart = cartValue.some(
+                    (item) => item.id === data.id
+               );
+               if (isAlreadyInCart) {
+                    alert("Item already in cart");
+               } else {
+                    cartValue.push(data);
+                    localStorage.setItem("cart", JSON.stringify(cartValue));
+                    alert("Item added to cart 🍕🚀");
+               }
+          }
+
+          function updateCartValue() {
+               let cartData = JSON.parse(localStorage.getItem("cart")) || [];
+               let cart = document.getElementById("cart");
+               cart.innerText = `🛒: ${cartData.length}`;
+          }
+          updateCartValue();
+     </script>
+</html>

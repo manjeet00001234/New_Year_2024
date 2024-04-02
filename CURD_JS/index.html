@@ -84,10 +84,10 @@
                     padding: 10px;
                     font-size: 20px;
                     /* background-color: rgba(128, 128, 128, 0.281); */
-                    background-color:#7f8fa6;
+                    background-color: #7f8fa6;
                     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
                          0 1px 2px rgba(0, 0, 0, 0.24);
-                         color: white;
+                    color: white;
                }
                table tr td {
                     padding: 5px;
@@ -104,7 +104,7 @@
                     padding: 10px 20px;
                     border-radius: 5px;
                     /* background-color: rgba(240, 128, 128, 0.624); */
-                    background-color:#ff7675;
+                    background-color: #ff7675;
                     color: white;
                     font-size: 15px;
                     font-weight: 400;
@@ -115,7 +115,7 @@
                }
                table button:hover {
                     transform: scale(1.1);
-                    background-color:#d63031;
+                    background-color: #d63031;
                }
 
                /* --------------media query mobile--------------- */
@@ -225,13 +225,10 @@
           </div>
      </body>
      <script>
-
-          let userId=null;
           let form = document.querySelector("form");
           // form.addEventListener("submit", postData);
 
           async function postData() {
-
                let data = {
                     name: document.getElementById("name").value,
                     mail: document.getElementById("mail").value,
@@ -246,56 +243,54 @@
                          data
                     );
                     alert("Admition Data Submited");
+                    getData();
                } catch (error) {
                     console.log(error);
                }
           }
 
-
           // ---------------------update data------------------
 
-
+          let userId = null;
           function newPostData(data) {
-               userId=data.id;
+               userId = data.id;
                document.getElementById("name").value = data.name;
                document.getElementById("mail").value = data.mail;
                document.getElementById("mob").value = data.mob;
                document.getElementById("city").value = data.city;
                document.getElementById("url").value = data.url;
-               document.getElementById("button").innerText="Save";
+               document.getElementById("button").innerText = "Save";
                console.log(userId);
           }
 
-          async function updateData(){
-               let newData={
+          async function updateData() {
+               let newData = {
                     name: document.getElementById("name").value,
                     mail: document.getElementById("mail").value,
                     mob: document.getElementById("mob").value,
                     city: document.getElementById("city").value,
                     img: document.getElementById("url").value,
-
-               }
+               };
 
                try {
-                    let newDataResorce=await axios.patch(`https://fair-gray-dove-kilt.cyclic.app/data/${userId}`,newData)
-
+                    let newDataResorce = await axios.patch(
+                         `https://fair-gray-dove-kilt.cyclic.app/data/${userId}`,
+                         newData
+                    );
+                    alert("updated")
                } catch (error) {
                     console.log(error);
                }
-
           }
 
-          form.addEventListener("submit",(eve)=>{
+          form.addEventListener("submit", (eve) => {
                eve.preventDefault();
-               if(userId){
+               if (userId) {
                     updateData();
-               }else{
+               } else {
                     postData();
                }
           });
-
-
-
 
           // ------------------------delete data in server-----------------
 
@@ -304,6 +299,7 @@
                     let deletedataresorce = await axios.delete(
                          `https://fair-gray-dove-kilt.cyclic.app/data/${id}`
                     );
+
                } catch (error) {
                     console.log(error);
                }
@@ -316,15 +312,17 @@
                          "https://fair-gray-dove-kilt.cyclic.app/data"
                     );
                     displayData(getdataresorce.data);
+                    console.log(getdataresorce.data);
                } catch (error) {
                     console.log(error);
                }
           }
           getData();
 
+          let tbody = document.querySelector("tbody");
           function displayData(data) {
                data.map((item) => {
-                    let tbody = document.querySelector("tbody");
+
                     let tr = document.createElement("tr");
 
                     let id = document.createElement("td");
@@ -356,24 +354,17 @@
                          alert("Admition Data Deleted");
                     });
 
-
                     let Ebtn = document.createElement("td");
                     let Ebtn1 = document.createElement("button");
                     Ebtn1.innerText = " Edit";
-                    // Ebtn1.id="button";
                     Ebtn.append(Ebtn1);
-                    // Ebtn1.style.background="green"
-                    Ebtn1.style.background="#27ae60"
-
-
+                    Ebtn1.style.background = "#27ae60";
                     Ebtn1.addEventListener("click", () => {
-                         newPostData(item)
-                         alert("Admition Data Updated");
+                         newPostData(item);
+
                     });
 
-
-
-                    tr.append(id, name, mail, mob, city, img, btn,Ebtn);
+                    tr.append(id, name, mail, mob, city, img, btn, Ebtn);
                     tbody.append(tr);
                });
           }

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <style>
+        *{
+            padding:0%;
+            margin: 0%;
+            box-sizing: border-box;
+        }
+        h1{
+            color: gray;
+            text-align: center;
+            margin: 20px;
+        }
+        table{
+            width: 50%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        table tr th{
+            padding: 10px;
+        }
+        table tr td{
+            text-align: center;
+        }
+        table tbody img{
+            width: 50px;
+            padding: 5px;
+        }
+        .chk_btn{
+        display: block;
+        margin:50px auto;
+        border: none;
+        outline: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: rgba(0, 128, 0, 0.409);
+        color: #fff;
+        transition: all .5s ease-in-out;
+        }
+        .chk_btn:hover{
+            transform: scale(1.05);
+        background-color: rgba(0, 128, 0, 0.919);
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Order Detale's</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Hotel Name</th>
+                <th>City</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <button class="chk_btn" id="chk_btn">Check Payment</button>
+</body>
+<script>
+    let orderData=JSON.parse(localStorage.getItem("cart"));
+    console.log(orderData);
+
+
+    let tbody=document.querySelector("tbody");
+    function displayData(data) {
+            //    cantaner.innerHTML = "";
+               data.forEach((item, index) => {
+
+
+                    let tr1 = document.createElement("tr");
+
+
+                    let td1 = document.createElement("td");
+                    td1.innerText=item.id;
+
+
+                    let td2 = document.createElement("td");
+                    td2.innerText=item.HotelName;
+
+                    let td3 = document.createElement("td");
+                    td3.innerText=item.city;
+
+
+                    let td4 = document.createElement("td");
+                    td4.innerText=item.price;
+
+
+                    let td5=document.createElement("td");
+                    let img = document.createElement("img");
+                    img.src = item.image;
+                    td5.append(img)
+
+                tr1.append(td1,td2,td3,td4,td5)
+                tbody.append(tr1)
+
+
+               });
+
+          }
+
+          let check_btn=document.getElementById("chk_btn");
+          check_btn.addEventListener("click",()=>{
+            window.location.href="payment.html"
+          })
+        displayData(orderData);
+</script>
+</html>
