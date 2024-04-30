@@ -243,11 +243,11 @@ background-color: rgba(0, 128, 0, 0.894);
 
 
 
-          <div id="main">
+          <!-- <div id="main">
             <button onclick="myGreeting()" class="btn"><i class="fa-solid fa-xmark"></i></button>
-            <!-- <img src="img.jpg" alt=""> -->
+             <img src="img.jpg" alt="">
                <h2>Your data is submited</h2>
-          </div>
+          </div> -->
      </body>
      <script>
 
@@ -281,7 +281,7 @@ const myTimeout = setInterval(myGreeting, 5000);
                console.log(obj);
                try {
                     let res = await axios.post(
-                         "http://localhost:8080/server",
+                         "https://fair-gray-dove-kilt.cyclic.app/data",
                          obj
                     );
                } catch (error) {
@@ -310,7 +310,7 @@ const myTimeout = setInterval(myGreeting, 5000);
                };
                try {
                     let newres = await axios.patch(
-                         `http://localhost:8080/server/${userId}`,
+                         `https://fair-gray-dove-kilt.cyclic.app/data/${userId}`,
                          newObj
                     );
                } catch (error) {
@@ -323,9 +323,12 @@ const myTimeout = setInterval(myGreeting, 5000);
                if (userId) {
                     updateData();
                     alert("update data submited");
+                    window.location.reload()
                } else {
                     MyFunc();
                     alert("Application dat submited");
+                    window.location.reload()
+
                }
           });
 
@@ -333,7 +336,7 @@ const myTimeout = setInterval(myGreeting, 5000);
           async function deleteFunc(id) {
                try {
                     let deletres = await axios.delete(
-                         `http://localhost:8080/server/${id}`
+                         `https://fair-gray-dove-kilt.cyclic.app/data/${id}`
                     );
                } catch (error) {
                     console.log(error);
@@ -345,7 +348,7 @@ const myTimeout = setInterval(myGreeting, 5000);
           async function getData() {
                try {
                     let getres = await axios.get(
-                         "http://localhost:8080/server"
+                         "https://fair-gray-dove-kilt.cyclic.app/data"
                     );
                     displayData(getres.data);
                } catch (error) {
@@ -399,6 +402,8 @@ const myTimeout = setInterval(myGreeting, 5000);
                     delBtn.addEventListener("click", () => {
                          deleteFunc(item.id);
                          alert("submited data delete");
+                    window.location.reload()
+
                     });
                     td7.append(delBtn);
 
@@ -413,7 +418,7 @@ const myTimeout = setInterval(myGreeting, 5000);
                     editBtn.addEventListener("click", () => {
                          newmyFunc(item);
 
-                         alert("you'r submited data update");
+                         // alert("you'r submited data update");
                          document.getElementById("submit").innerText = "save";
                     });
                     td8.append(editBtn);
