@@ -17,9 +17,14 @@
 
         table {
             width: 70%;
-
+            border-collapse: collapse;
             text-align: center;
             /* border: 1px solid black; */
+        }
+
+        table tr th{
+            padding: 10px;
+            font-size: 20px;
         }
 
         #total_div {
@@ -36,6 +41,24 @@
             height: 40px;
             background-color: rgb(206, 102, 163);
             border: none;
+        }
+        .update{
+            display: block;
+            margin: auto;
+            padding: 10px 50px;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            background-color: #0985e3d3;
+            color: #fff;
+            cursor: pointer;
+            transition: all .5s ease-in-out;
+        }
+        .update:hover{
+            transform: scale(1.05);
+            background-color: #0984e3;
+
         }
     </style>
 </head>
@@ -60,6 +83,7 @@
             <button id="total">0</button>
         </div>
     </div>
+    <a style="text-decoration: none;" href="payment.html"><button class="update">Update</button></a>
 
 </body>
 <script>
